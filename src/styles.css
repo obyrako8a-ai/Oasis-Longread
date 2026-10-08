@@ -1,88 +1,85 @@
 @font-face {
   font-family: "Pusia";
-  src: local("Pusia");
+  src: url("/fonts/pusia/Pusia-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Jost";
-  src: local("Jost");
+  src: url("/fonts/jost/Jost-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Jost";
-  src: local("Jost");
+  src: url("/fonts/jost/Jost-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Jost";
-  src: local("Jost");
+  src: url("/fonts/jost/Jost-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 
+/* =========================================================
+   ОСНОВА
+========================================================= */
+
 :root {
-  --blue: #00B7FF;
-  --light-blue: #E2F5FB;
-  --orange: #FF6436;
-  --grey: #A09898;
+  --blue: #00b7ff;
+  --light-blue: #e2f5fb;
+  --orange: #ff6436;
+  --black: #000000;
+
+  /*
+    1280px = 100vw.
+    Поэтому все размеры ниже пересчитываются
+    автоматически при изменении ширины экрана.
+  */
 
   --design-width: 1280;
 }
-
 
 * {
   box-sizing: border-box;
 }
 
-
 html {
-  margin: 0;
-  padding: 0;
   scroll-behavior: smooth;
 }
-
 
 body {
   margin: 0;
   padding: 0;
-
-  background: #fff;
-  color: #000;
-
+  background: white;
+  color: var(--black);
   overflow-x: hidden;
-
-  font-family: "Jost", sans-serif;
 }
-
-
-button,
-textarea {
-  font-family: "Jost", sans-serif;
-}
-
 
 img {
   display: block;
   max-width: 100%;
 }
 
+button,
+textarea {
+  font-family: "Jost", sans-serif;
+}
 
 .longread {
   width: 100%;
   overflow: hidden;
 }
-
-
-/* =========================================================
-   COMMON
-========================================================= */
 
 .section {
   width: 100%;
@@ -90,103 +87,67 @@ img {
 }
 
 
-.section-title {
-  margin: 0;
-
-  color: var(--blue);
-
-  font-family: "Pusia", sans-serif;
-  font-weight: 700;
-
-  font-size: 3.75vw;
-  line-height: 1.05;
-}
-
-
-.accent-wrap {
-  position: relative;
-
-  display: inline-block;
-
-  --line-height: 100%;
-}
-
+/* =========================================================
+   ОБЩИЙ КОМПОНЕНТ ГОЛУБОЙ ПЛАШКИ С ЛИНИЯМИ
+========================================================= */
 
 .accent-box {
   position: relative;
+  width: 100%;
+}
 
-  background: var(--light-blue);
-
-  color: #000;
-
-  font-family: "Jost", sans-serif;
-  font-weight: 400;
-
+.accent-content {
+  position: relative;
   z-index: 2;
+  background: var(--light-blue);
 }
 
-
-.accent-box p {
+.accent-content p {
   margin: 0;
+  padding: 0;
 }
-
 
 .accent-line {
   position: absolute;
-
-  width: 0.234vw;
-
+  top: -1.25vw;
+  bottom: -1.25vw;
+  width: 0.234375vw;
+  min-width: 3px;
   background: var(--blue);
-
-  z-index: 3;
-
+  z-index: 5;
   border-radius: 999px;
 }
 
-
-.accent-line::after {
-  content: "";
-
-  position: absolute;
-
-  width: 1.1vw;
-  height: 1.1vw;
-
-  background: var(--blue);
-
-  border-radius: 50%;
-}
-
-
 .accent-line-left {
   left: 0;
-
-  top: -1.25vw;
-  bottom: -1.25vw;
 }
-
-
-.accent-line-left::after {
-  top: -0.55vw;
-  left: 50%;
-
-  transform: translateX(-50%);
-}
-
 
 .accent-line-right {
   right: 0;
-
-  top: -1.25vw;
-  bottom: -1.25vw;
 }
 
+.accent-dot {
+  position: absolute;
+  width: 1.1vw;
+  height: 1.1vw;
+  min-width: 12px;
+  min-height: 12px;
+  max-width: 15px;
+  max-height: 15px;
+  background: var(--blue);
+  border-radius: 50%;
+}
 
-.accent-line-right::after {
-  bottom: -0.55vw;
+.accent-line-left .accent-dot {
   left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
 
-  transform: translateX(-50%);
+.accent-line-right .accent-dot {
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
 }
 
 
@@ -194,243 +155,244 @@ img {
    1. HERO
 ========================================================= */
 
-.hero {
+.hero-section {
   position: relative;
+  width: 100%;
+  height: 50.2vw;
+  min-height: 480px;
+  overflow: hidden;
+}
 
-  min-height: 56.25vw;
+.hero-background {
+  position: absolute;
+  inset: 0;
 
   background-image: url("/images/background.png");
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center bottom;
+  background-repeat: no-repeat;
 
-  padding-top: 3.125vw;
-  padding-bottom: 3.125vw;
+  z-index: 0;
 }
-
 
 .hero-panel {
+  position: absolute;
+
   width: 93.75vw;
-  height: 51.33vw;
+  height: 51.328vw;
 
-  max-width: 1200px;
+  left: 3.125vw;
+  top: 2.734vw;
 
-  margin: 0 auto;
-
-  padding:
-    1.95vw
-    2.5vw
-    2.5vw;
-
-  background: #fff;
+  background: white;
 
   border-radius: 3.125vw;
+
+  padding: 2.3vw 2.35vw;
+
+  z-index: 2;
 }
-
-
-.hero-top {
-  display: flex;
-
-  justify-content: space-between;
-  align-items: flex-start;
-
-  gap: 3vw;
-}
-
 
 .hero-title {
-  margin: 0;
+  position: absolute;
 
-  color: var(--blue);
+  left: 2.35vw;
+  top: 1.45vw;
 
   font-family: "Pusia", sans-serif;
   font-weight: 700;
 
   font-size: 7.5vw;
-  line-height: 0.91;
+  line-height: 0.9;
 
-  flex: 0 0 auto;
+  color: var(--blue);
+
+  letter-spacing: -0.16vw;
 }
-
 
 .hero-right {
-  width: 47vw;
+  position: absolute;
 
-  padding-top: 0.5vw;
+  right: 2.35vw;
+  top: 1.65vw;
+
+  width: 44.5vw;
 }
 
-
 .hashtags {
-  display: flex;
+  width: 100%;
 
+  display: flex;
   justify-content: space-between;
   align-items: center;
 
-  width: 100%;
+  margin-bottom: 2vw;
 
-  margin-bottom: 1.25vw;
-
-  color: #000;
+  padding-left: 0.3vw;
+  padding-right: 0.3vw;
 
   font-family: "Jost", sans-serif;
-  font-size: 1.875vw;
   font-weight: 300;
+
+  font-size: 1.875vw;
+  line-height: 1;
+
+  color: #000;
+}
+
+.hero-accent {
+  width: 42.3vw;
+  margin-left: auto;
+}
+
+.hero-accent .accent-content {
+  min-height: 8.75vw;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0.8vw 0.8vw;
+}
+
+.hero-accent p {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+
+  font-size: 2.8125vw;
+  line-height: 1.3;
+
+  color: #000;
 
   white-space: nowrap;
 }
 
+.hero-photo {
+  position: absolute;
 
-.hero-accent {
-  width: 42.27vw;
-}
+  left: 2.35vw;
+  right: 2.35vw;
+  bottom: 2.35vw;
 
-
-.hero-accent .accent-box {
-  min-height: 8.75vw;
-
-  padding:
-    0.75vw
-    1vw;
-
-  display: flex;
-  align-items: center;
-}
-
-
-.hero-accent p {
-  font-size: 2.8125vw;
-  line-height: 1.2;
-}
-
-
-.hero-image-wrap {
-  position: relative;
-
-  width: 100%;
-
-  margin-top: 2.5vw;
-
-  height: 31.25vw;
+  height: 31.5vw;
 
   overflow: hidden;
 
   border-radius: 3.125vw;
 }
 
-
-.hero-image {
+.hero-photo img {
   width: 100%;
   height: 100%;
 
   object-fit: cover;
+  object-position: center;
 }
 
-
-.hero-overlay {
+.hero-photo-overlay {
   position: absolute;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.34);
+  background: rgba(0, 0, 0, 0.35);
+
+  backdrop-filter: blur(1.8vw);
+  -webkit-backdrop-filter: blur(1.8vw);
 
   border-radius: inherit;
-
-  backdrop-filter: blur(23px);
-  -webkit-backdrop-filter: blur(23px);
 }
 
 
 /* =========================================================
-   2. WHY
+   2. ПОЧЕМУ НАМ НЕЛОВКО?
 ========================================================= */
 
 .section-two {
-  padding:
-    6.25vw
-    4.92vw
-    5vw;
+  min-height: 37vw;
+
+  padding-top: 7.5vw;
+  padding-bottom: 7vw;
+
+  background: white;
 }
 
+.section-two-inner {
+  width: 100%;
 
-.section-two .section-title {
-  margin-bottom: 2.5vw;
-}
-
-
-.two-layout {
-  display: grid;
-
-  grid-template-columns:
-    43.5vw
-    1fr;
-
+  display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  column-gap: 5vw;
+  padding: 0 6.1vw;
 }
 
-
-.two-text {
-  width: 100%;
+.section-two-text {
+  width: 39.8vw;
 }
 
+.section-two h2,
+.section-four h2 {
+  margin: 0 0 1.3vw;
 
-.two-text .accent-wrap {
-  width: 100%;
+  font-family: "Pusia", sans-serif;
+  font-weight: 700;
+
+  font-size: 3.75vw;
+  line-height: 1;
+
+  color: var(--blue);
+
+  white-space: nowrap;
 }
 
-
-.two-text .accent-box {
-  width: 100%;
-
-  min-height: 22.2vw;
-
-  padding:
-    0.6vw
-    0.8vw;
+.section-two-accent {
+  width: 38.3vw;
 }
 
+.section-two-accent .accent-content {
+  min-height: 17.8vw;
 
-.two-text .accent-box p {
+  padding: 0.8vw 0.7vw;
+}
+
+.section-two-accent p {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+
   font-size: 2.8125vw;
-  line-height: 1.52;
+  line-height: 1.42;
 }
 
+.section-two-photo {
+  width: 46.2vw;
 
-.framed-photo {
+  margin-right: 0.4vw;
+
+  transform: translateY(1.2vw);
+}
+
+.orange-photo {
   position: relative;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
-
-.photo-one {
-  width: 46.17vw;
-
-  margin-left: auto;
-
-  min-height: 31vw;
-}
-
-
-.photo-one img {
+.orange-photo img {
   position: relative;
 
-  width: 46.17vw;
-  height: auto;
+  z-index: 2;
+
+  width: 100%;
+
+  object-fit: cover;
 
   border-radius: 3.125vw;
-
-  z-index: 2;
 }
-
 
 .orange-frame {
   position: absolute;
 
-  width: 100%;
-  height: 100%;
+  inset: -2.5vw -2vw -2.5vw -2vw;
 
   border: 0.234vw solid var(--orange);
 
@@ -445,88 +407,79 @@ img {
 
 
 /* =========================================================
-   3. HISTORY
+   3. ИСТОРИЯ
 ========================================================= */
 
 .section-three {
-  padding-top: 1vw;
+  padding-top: 2vw;
+  padding-bottom: 0;
 }
 
+.section-title-centered {
+  margin: 0 auto 3vw;
 
-.history-heading {
   text-align: center;
 
-  margin-bottom: 3.2vw;
+  font-family: "Pusia", sans-serif;
+  font-weight: 700;
+
+  font-size: 3.75vw;
+  line-height: 1;
+
+  color: var(--blue);
+
+  white-space: nowrap;
 }
 
-
-.history-background {
+.history-area {
   width: 100%;
-
-  min-height: 56.25vw;
-
-  padding:
-    1.25vw
-    1.875vw
-    1.875vw;
 
   background: var(--blue);
 
-  overflow: hidden;
+  padding: 1.25vw 0;
+
+  min-height: 58vw;
 }
 
-
-.history-track {
+.history-scroll {
   width: 100%;
 
   display: flex;
+  gap: 1.484vw;
 
-  gap: 1.48vw;
+  padding: 0 1.875vw;
 
   overflow-x: auto;
   overflow-y: hidden;
-
-  cursor: grab;
 
   scrollbar-width: none;
 
   -ms-overflow-style: none;
 
-  user-select: none;
-
-  padding:
-    0.3vw
-    0.2vw;
+  cursor: grab;
 }
 
-
-.history-track::-webkit-scrollbar {
-  display: none;
-}
-
-
-.history-track.is-dragging {
+.history-scroll:active {
   cursor: grabbing;
 }
 
+.history-scroll::-webkit-scrollbar {
+  display: none;
+}
 
 .history-card {
   flex: 0 0 46.17vw;
 
-  min-height: 52.58vw;
+  height: 52.6vw;
 
-  padding:
-    1.33vw;
+  background: white;
 
-  background: #fff;
+  border-radius: 2.7vw;
 
-  border-radius: 2.3vw;
+  padding: 1.25vw;
 
   overflow: hidden;
-
-  user-select: none;
 }
-
 
 .history-image {
   width: 100%;
@@ -534,47 +487,45 @@ img {
 
   object-fit: cover;
 
-  border-radius: 1.2vw;
+  border-radius: 1.6vw;
 
-  pointer-events: none;
+  margin-bottom: 1.35vw;
 }
-
 
 .history-title-row {
   display: flex;
-
   align-items: center;
   justify-content: space-between;
 
-  gap: 1.5vw;
+  gap: 1.2vw;
 
-  margin-top: 1.25vw;
-  margin-bottom: 1vw;
+  margin-bottom: 0.7vw;
 }
-
 
 .history-title-row h3 {
   margin: 0;
 
   font-family: "Jost", sans-serif;
-  font-size: 2.8125vw;
   font-weight: 500;
+
+  font-size: 2.8125vw;
+  line-height: 1;
+
+  white-space: nowrap;
 }
 
-
 .history-progress {
-  width: 11.7vw;
-  height: 0.55vw;
+  flex-shrink: 0;
+
+  width: 12vw;
+  height: 0.8vw;
 
   background: var(--light-blue);
 
   border-radius: 999px;
 
   overflow: hidden;
-
-  flex-shrink: 0;
 }
-
 
 .history-progress span {
   display: block;
@@ -586,365 +537,356 @@ img {
   border-radius: 999px;
 }
 
+.history-progress.long span {
+  width: 78%;
+}
+
+.history-progress.short span {
+  width: 25%;
+}
+
+.history-progress.half span {
+  width: 50%;
+}
 
 .history-text {
   height: 25vw;
 
   overflow-y: auto;
+  overflow-x: hidden;
 
   scrollbar-width: none;
 
   -ms-overflow-style: none;
-
-  font-family: "Jost", sans-serif;
-  font-size: 2.8125vw;
-  line-height: 1.55;
 }
-
 
 .history-text::-webkit-scrollbar {
   display: none;
 }
 
+.history-text {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+
+  font-size: 2.8125vw;
+  line-height: 1.42;
+}
+
 
 /* =========================================================
-   4. INFLUENCE
+   4. КАК ЭТО ВЛИЯЕТ?
 ========================================================= */
 
 .section-four {
-  padding:
-    7vw
-    4.92vw
-    6vw;
+  padding-top: 8vw;
+  padding-bottom: 7vw;
+
+  background: white;
 }
 
+.section-four-inner {
+  width: 100%;
 
-.four-layout {
-  display: grid;
-
-  grid-template-columns:
-    47vw
-    43.5vw;
-
-  align-items: center;
-
-  column-gap: 4vw;
-}
-
-
-.photo-five {
-  width: 46.17vw;
-
-  min-height: 33vw;
-}
-
-
-.photo-five img {
-  position: relative;
-
-  width: 46.17vw;
-  height: auto;
-
-  border-radius: 3.125vw;
-
-  z-index: 2;
-}
-
-
-.four-text {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  flex-direction: column;
-
-  align-items: flex-start;
+  padding: 0 3.125vw 0 1.875vw;
 }
 
+.section-four-photo {
+  width: 46.2vw;
 
-.four-text .section-title {
-  margin-bottom: 2.5vw;
-
-  white-space: nowrap;
+  margin-top: 1vw;
 }
 
-
-.four-accent {
-  width: 41vw;
+.section-four-photo .orange-frame {
+  inset: -2.3vw -1.8vw -2.3vw -1.8vw;
 }
 
+.section-four-text {
+  width: 39vw;
 
-.four-accent .accent-box {
-  padding:
-    0.7vw
-    0.8vw;
-
-  min-height: 20vw;
+  margin-right: 3vw;
 }
 
+.section-four-accent {
+  width: 35.5vw;
+}
 
-.four-accent .accent-box p {
+.section-four-accent .accent-content {
+  min-height: 18vw;
+
+  padding: 0.7vw 0.7vw;
+}
+
+.section-four-accent p {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+
   font-size: 2.8125vw;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 
 /* =========================================================
-   5. IF WE TALK
+   5. ЕСЛИ ГОВОРИТЬ
 ========================================================= */
 
 .section-five {
-  padding:
-    4vw
-    4.92vw
-    7vw;
+  padding-top: 2vw;
+  padding-bottom: 7vw;
 }
 
-
-.five-heading {
-  text-align: center;
-
-  margin-bottom: 3.2vw;
+.section-five .section-title-centered {
+  margin-bottom: 4vw;
 }
 
+.section-five-grid {
+  width: 100%;
 
-.five-layout {
   display: grid;
 
-  grid-template-columns:
-    46.17vw
-    46.17vw;
+  grid-template-columns: 46.17vw 46.17vw;
 
-  column-gap: 4vw;
+  column-gap: 2.35vw;
 
-  align-items: start;
+  padding: 0 1.875vw;
 }
-
 
 .five-left,
 .five-right {
-  position: relative;
+  width: 100%;
 }
 
-
-.photo-six {
+.photo-6 {
   width: 46.17vw;
   height: 47.73vw;
 
   object-fit: cover;
 
-  border-radius: 2.8vw;
-}
+  border-radius: 2.7vw;
 
+  margin-bottom: 1.8vw;
+}
 
 .five-accent {
-  width: 46.17vw;
+  width: 43vw;
 
-  margin-top: 1.6vw;
+  margin-bottom: 5vw;
 }
 
+.five-accent .accent-content {
+  min-height: 7vw;
 
-.five-accent .accent-box {
-  padding:
-    0.8vw;
-
-  min-height: 10vw;
+  padding: 0.8vw 0.7vw;
 }
 
+.five-accent p {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
 
-.five-accent .accent-box p {
-  font-size: 2.8125vw;
-  line-height: 1.35;
+  font-size: 2.25vw;
+  line-height: 1.45;
 }
 
+.five-main-text {
+  margin: 0 0 1.8vw;
 
-.five-normal-text {
-  margin:
-    5vw 0 0;
-
-  padding: 0;
-
-  font-size: 2.8125vw;
-  line-height: 1.48;
-}
-
-
-.five-intro {
-  margin: 0 0 1.6vw;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
 
   font-size: 2.8125vw;
-  line-height: 1.48;
+  line-height: 1.42;
 }
 
-
-.photo-seven {
+.photo-7 {
   width: 46.17vw;
   height: 25vw;
 
   object-fit: cover;
 
-  border-radius: 2.8vw;
+  border-radius: 2.7vw;
+
+  margin-bottom: 4vw;
 }
 
+.five-bottom-text {
+  margin: 0;
 
-.photo-eight {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+
+  font-size: 2.8125vw;
+  line-height: 1.42;
+}
+
+.photo-8 {
   width: 46.17vw;
   height: 47.73vw;
 
   object-fit: cover;
 
-  border-radius: 2.8vw;
-
-  margin-top: 6.2vw;
+  border-radius: 2.7vw;
 }
 
 
 /* =========================================================
-   6. FINAL THOUGHT
+   6. ФИНАЛЬНАЯ МЫСЛЬ
 ========================================================= */
 
 .section-six {
-  padding:
-    5vw
-    0
-    8vw;
+  padding-top: 1vw;
+  padding-bottom: 8vw;
+
+  min-height: 55vw;
+
+  background: white;
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
 }
 
-
-.final-heading {
-  width: 66vw;
+.section-six-title {
+  margin: 0;
 
   text-align: center;
 
-  margin: 0 0 6vw;
+  font-family: "Pusia", sans-serif;
+  font-weight: 700;
+
+  font-size: 3.75vw;
+  line-height: 1.15;
+
+  color: var(--blue);
 }
 
+.section-six-accent {
+  width: 29.5vw;
 
-.final-accent {
-  width: 40vw;
+  margin-top: 4.2vw;
 }
 
-
-.final-accent .accent-box {
-  min-height: 9.5vw;
-
-  padding:
-    1vw;
+.section-six-accent .accent-content {
+  min-height: 6.8vw;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  padding: 0.7vw 0.8vw;
 }
 
-
-.final-accent .accent-box p {
-  font-size: 2.8125vw;
-  line-height: 1.4;
-
+.section-six-accent p {
   text-align: center;
+
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+
+  font-size: 2.25vw;
+  line-height: 1.45;
 }
 
 
 /* =========================================================
-   7. FEEDBACK
+   7. ФОРМА
 ========================================================= */
 
 .section-seven {
   width: 100%;
 
+  min-height: 55.39vw;
+
   background: var(--light-blue);
 
-  padding-top: 5.47vw;
-}
+  position: relative;
 
+  padding-top: 3.125vw;
+}
 
 .feedback-content {
-  width: 92.2vw;
+  width: 100%;
 
-  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
 
-  display: grid;
+  gap: 1.5625vw;
 
-  grid-template-columns:
-    46.1vw
-    46.1vw;
+  padding: 0 1.875vw;
 
-  gap: 1.56vw;
-
-  align-items: center;
+  margin-bottom: 5.47vw;
 }
 
 
-/* WHITE FORM CARD */
+/* Белая форма */
 
-.feedback-form-card {
-  width: 46.1vw;
+.feedback-form {
+  flex: 0 0 46.1vw;
+
   height: 44.14vw;
 
-  background: #fff;
+  background: white;
 
   border-radius: 3.125vw;
 
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-}
-
-
-.feedback-form {
-  width: 43.36vw;
+  padding: 2.75vw 2.75vw;
 
   display: flex;
-
   flex-direction: column;
 
-  align-items: stretch;
+  gap: 1.5625vw;
 }
 
 
-.feedback-input {
+/* Внутренняя голубая область */
+
+.feedback-input-wrap {
   width: 100%;
   height: 28.52vw;
 
-  resize: none;
+  background: var(--light-blue);
+
+  border-radius: 1.5vw;
+
+  overflow: hidden;
+}
+
+.feedback-input-wrap textarea {
+  display: block;
+
+  width: 100%;
+  height: 100%;
 
   border: none;
   outline: none;
 
-  border-radius: 1vw;
+  resize: none;
 
-  background: var(--light-blue);
+  background: transparent;
 
-  padding:
-    1vw;
-
-  color: #000;
+  padding: 0.9vw;
 
   font-family: "Jost", sans-serif;
-  font-size: 2.8125vw;
   font-weight: 400;
 
-  line-height: 1.3;
+  font-size: 2.8125vw;
+  line-height: 1.25;
+
+  color: #000;
 }
 
-
-.feedback-input::placeholder {
-  color: var(--grey);
-
+.feedback-input-wrap textarea::placeholder {
+  color: #a09898;
   opacity: 1;
 }
 
 
+/* Кнопка */
+
 .submit-button {
   width: 100%;
   height: 7.34vw;
-
-  margin-top: 1.2vw;
 
   border: none;
 
@@ -952,71 +894,72 @@ img {
 
   background: var(--blue);
 
-  color: #fff;
+  color: white;
 
   font-family: "Jost", sans-serif;
-  font-size: 2.8125vw;
   font-weight: 500;
+
+  font-size: 2.8125vw;
 
   cursor: pointer;
 
   transition:
-    background 0.2s ease,
+    background-color 0.2s ease,
     color 0.2s ease;
 }
 
-
 .submit-button:hover {
-  opacity: 0.92;
+  opacity: 0.95;
 }
-
 
 .submit-button.submitted {
   background: var(--light-blue);
-
   color: var(--blue);
 }
 
+
+/* Анонимность */
 
 .anonymous {
-  margin:
-    0.6vw 0 0;
-
   font-family: "Jost", sans-serif;
-  font-size: 1.875vw;
   font-weight: 300;
 
+  font-size: 1.875vw;
+
   color: #000;
+
+  margin-top: -0.5vw;
 }
 
 
-/* TEXT */
+/* Текст справа */
 
-.feedback-copy {
-  width: 100%;
+.feedback-text {
+  flex: 1;
+
+  padding-top: 0.3vw;
 }
 
-
-.feedback-copy h2 {
-  margin: 0 0 2vw;
-
-  color: var(--blue);
+.feedback-text h2 {
+  margin: 0 0 1.5625vw;
 
   font-family: "Pusia", sans-serif;
+  font-weight: 700;
+
   font-size: 3.75vw;
   line-height: 1.05;
-  font-weight: 700;
+
+  color: var(--blue);
 }
 
-
-.feedback-copy p {
+.feedback-text p {
   margin: 0;
 
   font-family: "Jost", sans-serif;
-  font-size: 2.8125vw;
-  line-height: 1.5;
+  font-weight: 400;
 
-  color: #000;
+  font-size: 2.8125vw;
+  line-height: 1.42;
 }
 
 
@@ -1026,197 +969,77 @@ img {
 
 .footer {
   width: 100%;
-  height: 7.73vw;
 
-  margin-top: 5.47vw;
-
-  padding:
-    0 2.5vw;
+  height: 7.734vw;
 
   background: var(--blue);
 
   display: flex;
-
   align-items: center;
   justify-content: space-between;
 
-  color: #fff;
+  padding: 0 2.3vw;
+
+  color: white;
 
   font-family: "Jost", sans-serif;
-  font-size: 2.8125vw;
   font-weight: 400;
+
+  font-size: 2.8125vw;
 
   text-align: center;
 }
 
-
-.footer span {
-  width: 33.333%;
-
-  white-space: nowrap;
+.footer > div {
+  flex: 1;
 }
 
-
-.footer span:nth-child(1) {
+.footer > div:first-child {
   text-align: left;
 }
 
-
-.footer span:nth-child(2) {
-  text-align: center;
-}
-
-
-.footer span:nth-child(3) {
+.footer > div:last-child {
   text-align: right;
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   АДАПТАЦИЯ ДЛЯ УЗКИХ ЭКРАНОВ
 ========================================================= */
 
 @media (max-width: 700px) {
 
-  .hero {
-    padding-top: 3vw;
+  .hero-section {
+    min-height: 400px;
   }
 
   .hero-panel {
-    width: 94vw;
-    height: auto;
-
-    min-height: 70vw;
-
-    padding: 3vw;
-
-    border-radius: 5vw;
+    border-radius: 28px;
   }
-
-  .hero-top {
-    flex-direction: column;
-  }
-
-  .hero-title {
-    font-size: 11vw;
-  }
-
-  .hero-right {
-    width: 100%;
-  }
-
-  .hashtags {
-    font-size: 3vw;
-  }
-
-  .hero-accent {
-    width: 100%;
-  }
-
-  .hero-accent p {
-    font-size: 4vw;
-  }
-
-  .hero-image-wrap {
-    height: 45vw;
-
-    margin-top: 4vw;
-
-    border-radius: 5vw;
-  }
-
-
-  .section-title {
-    font-size: 6vw;
-  }
-
-
-  .two-layout,
-  .four-layout,
-  .five-layout,
-  .feedback-content {
-    grid-template-columns: 1fr;
-  }
-
-
-  .photo-one,
-  .photo-one img,
-  .photo-five,
-  .photo-five img,
-  .photo-six,
-  .photo-seven,
-  .photo-eight,
-  .five-accent,
-  .four-accent,
-  .feedback-form-card,
-  .feedback-form {
-    width: 100%;
-  }
-
-
-  .photo-one img,
-  .photo-five img {
-    height: auto;
-  }
-
 
   .history-card {
     flex-basis: 80vw;
   }
 
-
-  .history-background {
-    min-height: 100vw;
+  .section-two-inner,
+  .section-four-inner {
+    gap: 5vw;
   }
 
-
-  .history-image {
-    height: 38vw;
+  .feedback-content {
+    flex-direction: column;
   }
-
-
-  .history-text {
-    height: 40vw;
-  }
-
-
-  .five-normal-text {
-    margin-top: 8vw;
-  }
-
-
-  .photo-eight {
-    margin-top: 5vw;
-  }
-
-
-  .feedback-form-card {
-    height: auto;
-
-    padding: 4vw;
-  }
-
 
   .feedback-form {
+    flex-basis: auto;
     width: 100%;
   }
 
-
-  .feedback-input {
-    height: 55vw;
+  .feedback-text {
+    width: 100%;
   }
-
-
-  .submit-button {
-    height: 13vw;
-  }
-
 
   .footer {
-    height: 15vw;
-
-    font-size: 3vw;
-
-    padding: 0 3vw;
+    font-size: 2.5vw;
   }
 }
