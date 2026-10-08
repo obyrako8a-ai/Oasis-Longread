@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 function App() {
+  const [review, setReview] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (review.trim() === "") {
+      return;
+    }
+
+    setSubmitted(true);
+    setReview("");
+  };
+
   return (
     <main className="longread">
 
       {/* =====================================================
-          ПЕРВЫЙ БЛОК
+          БЛОК 1
       ====================================================== */}
 
       <section className="hero">
@@ -20,14 +34,12 @@ function App() {
             СТЫДА
           </h1>
 
-
           <div className="hashtags">
             <span>#табу</span>
             <span>#туалет</span>
             <span>#уборная</span>
             <span>#инфраструктура</span>
           </div>
-
 
           <div className="subtitle-wrapper">
 
@@ -49,7 +61,6 @@ function App() {
 
           </div>
 
-
           <div className="photo-wrapper">
 
             <img
@@ -68,12 +79,10 @@ function App() {
 
 
       {/* =====================================================
-          ВТОРОЙ БЛОК
+          БЛОК 2
       ====================================================== */}
 
       <section className="second-section">
-
-        {/* ТЕКСТ */}
 
         <div className="second-text-column">
 
@@ -81,13 +90,11 @@ function App() {
             ПОЧЕМУ НАМ НЕЛОВКО?
           </h2>
 
-
           <div className="second-subtitle-wrapper">
 
             <div className="second-decor-line second-decor-line-left">
               <div className="second-decor-dot"></div>
             </div>
-
 
             <div className="second-subtitle-box">
 
@@ -107,7 +114,6 @@ function App() {
 
             </div>
 
-
             <div className="second-decor-line second-decor-line-right">
               <div className="second-decor-dot"></div>
             </div>
@@ -116,8 +122,6 @@ function App() {
 
         </div>
 
-
-        {/* ФОТО */}
 
         <div className="second-photo-column">
 
@@ -138,7 +142,7 @@ function App() {
 
 
       {/* =====================================================
-          ТРЕТИЙ БЛОК
+          БЛОК 3
       ====================================================== */}
 
       <section className="third-section">
@@ -147,13 +151,10 @@ function App() {
           ОТКУДА ЭТО ВЗЯЛОСЬ?
         </h2>
 
-
         <div className="history-slider">
 
 
-          {/* =================================================
-              АНТИЧНОСТЬ
-          ================================================== */}
+          {/* АНТИЧНОСТЬ */}
 
           <article className="history-card">
 
@@ -162,7 +163,6 @@ function App() {
               alt=""
               className="history-image"
             />
-
 
             <div className="history-card-heading">
 
@@ -179,7 +179,6 @@ function App() {
               </div>
 
             </div>
-
 
             <div className="history-text">
 
@@ -198,9 +197,7 @@ function App() {
           </article>
 
 
-          {/* =================================================
-              СРЕДНЕВЕКОВЬЕ
-          ================================================== */}
+          {/* СРЕДНЕВЕКОВЬЕ */}
 
           <article className="history-card">
 
@@ -209,7 +206,6 @@ function App() {
               alt=""
               className="history-image"
             />
-
 
             <div className="history-card-heading">
 
@@ -227,7 +223,6 @@ function App() {
 
             </div>
 
-
             <div className="history-text">
 
               <p>
@@ -244,9 +239,7 @@ function App() {
           </article>
 
 
-          {/* =================================================
-              РОССИЯ
-          ================================================== */}
+          {/* РОССИЯ */}
 
           <article className="history-card">
 
@@ -255,7 +248,6 @@ function App() {
               alt=""
               className="history-image"
             />
-
 
             <div className="history-card-heading">
 
@@ -273,7 +265,6 @@ function App() {
 
             </div>
 
-
             <div className="history-text">
 
               <p>
@@ -288,22 +279,16 @@ function App() {
 
           </article>
 
-
         </div>
 
       </section>
 
 
       {/* =====================================================
-          ЧЕТВЁРТЫЙ БЛОК
+          БЛОК 4
       ====================================================== */}
 
       <section className="fourth-section">
-
-
-        {/* =================================================
-            ФОТО — СЛЕВА
-        ================================================== */}
 
         <div className="fourth-photo-column">
 
@@ -321,23 +306,17 @@ function App() {
         </div>
 
 
-        {/* =================================================
-            ТЕКСТ — СПРАВА
-        ================================================== */}
-
         <div className="fourth-text-column">
 
           <h2 className="fourth-title">
             КАК ЭТО ВЛИЯЕТ?
           </h2>
 
-
           <div className="fourth-subtitle-wrapper">
 
             <div className="fourth-decor-line fourth-decor-line-left">
               <div className="fourth-decor-dot"></div>
             </div>
-
 
             <div className="fourth-subtitle-box">
 
@@ -359,7 +338,6 @@ function App() {
 
             </div>
 
-
             <div className="fourth-decor-line fourth-decor-line-right">
               <div className="fourth-decor-dot"></div>
             </div>
@@ -372,10 +350,256 @@ function App() {
 
 
       {/* =====================================================
-          ЗАГОТОВКА ПОД СЛЕДУЮЩИЕ БЛОКИ
+          БЛОК 5
       ====================================================== */}
 
-      <section className="content-placeholder">
+      <section className="fifth-section">
+
+        <h2 className="fifth-title">
+          ЕСЛИ ГОВОРИТЬ, ТО ЧТО БУДЕТ?
+        </h2>
+
+
+        <div className="fifth-content">
+
+
+          {/* ФОТО 6 */}
+
+          <div className="fifth-photo-six">
+
+            <img
+              src="/images/6_photo.png"
+              alt=""
+            />
+
+          </div>
+
+
+          {/* ТЕКСТ + ФОТО 7 */}
+
+          <div className="fifth-right-top">
+
+            <p className="fifth-main-text">
+              В Азии про туалеты говорят открыто:
+              в рекламе, в школах, в искусстве. Есть
+              музеи, на эту тему, и детские книги
+              о гигиене. Архитекторы создают уборные
+              как арт-объекты.
+            </p>
+
+
+            <img
+              src="/images/7_photo.png"
+              alt=""
+              className="fifth-photo-seven"
+            />
+
+          </div>
+
+
+          {/* ГОЛУБАЯ ПЛАШКА + ОБЫЧНЫЙ ТЕКСТ */}
+
+          <div className="fifth-left-bottom">
+
+            <div className="fifth-blue-wrapper">
+
+              <div className="fifth-blue-line fifth-blue-line-left">
+                <div className="fifth-blue-dot"></div>
+              </div>
+
+              <div className="fifth-blue-box">
+
+                <p>
+                  Открытый разговор о базовых
+                  потребностях приводит к удобным
+                  городам для всех.
+                </p>
+
+              </div>
+
+              <div className="fifth-blue-line fifth-blue-line-right">
+                <div className="fifth-blue-dot"></div>
+              </div>
+
+            </div>
+
+
+            <p className="fifth-bottom-text">
+              В результате по городам можно гулять
+              без страха. Ты знаешь, что через пять
+              минут найдёшь чистый, бесплатный
+              и современный туалет.
+            </p>
+
+          </div>
+
+
+          {/* ФОТО 8 */}
+
+          <div className="fifth-photo-eight">
+
+            <img
+              src="/images/8_photo.png"
+              alt=""
+            />
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          БЛОК 6
+      ====================================================== */}
+
+      <section className="sixth-section">
+
+        <h2 className="sixth-title">
+          Нам пора перестать стесняться
+          <br />
+          и начать говорить об этом
+          <br />
+          вслух. Тогда и наши города
+          <br />
+          станут удобнее.
+        </h2>
+
+
+        <div className="sixth-subtitle-wrapper">
+
+          <div className="sixth-decor-line sixth-decor-line-left">
+            <div className="sixth-decor-dot"></div>
+          </div>
+
+
+          <div className="sixth-subtitle-box">
+
+            <p>
+              Отношение к туалетам показывает,
+              <br />
+              насколько общество готово видеть
+              <br />
+              в человеке человека.
+            </p>
+
+          </div>
+
+
+          <div className="sixth-decor-line sixth-decor-line-right">
+            <div className="sixth-decor-dot"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          БЛОК 7 — ФОРМА ОТЗЫВА
+      ====================================================== */}
+
+      <section className="seventh-section">
+
+
+        <div className="feedback-content">
+
+
+          {/* ФОРМА */}
+
+          <div className="feedback-form-card">
+
+            <form onSubmit={handleSubmit}>
+
+              <div className="feedback-input-area">
+
+                <textarea
+                  value={review}
+                  onChange={(e) => {
+                    setReview(e.target.value);
+                    setSubmitted(false);
+                  }}
+                  placeholder="Ваш отзыв..."
+                  aria-label="Ваш отзыв"
+                />
+
+              </div>
+
+
+              <button
+                type="submit"
+                className="feedback-button"
+              >
+                Отправить
+              </button>
+
+
+              <p className="anonymous-text">
+                *Опрос анонимный
+              </p>
+
+              {submitted && (
+                <p className="success-message">
+                  Спасибо за ваш отзыв!
+                </p>
+              )}
+
+            </form>
+
+          </div>
+
+
+          {/* ТЕКСТ */}
+
+          <div className="feedback-text">
+
+            <h2>
+              Давайте поговорим
+              <br />
+              о туалетах?
+            </h2>
+
+            <p>
+              Расскажите, что вас тревожит
+              <br />
+              в городских туалетах и что для вас
+              <br />
+              категорически важно. Как быстро
+              <br />
+              вы находите туалет в городе?
+              <br />
+              Ваши отзывы помогут создать
+              <br />
+              платформу «Оазис» для поиска
+              <br />
+              доступных туалетов.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        {/* ПОДВАЛ */}
+
+        <footer className="footer">
+
+          <div className="footer-author">
+            Автор: Буракова Ольга
+          </div>
+
+          <div className="footer-code">
+            ГД25ДЗ12
+          </div>
+
+          <div className="footer-curator">
+            Куратор: Гриднев Сергей
+          </div>
+
+        </footer>
+
+
       </section>
 
     </main>

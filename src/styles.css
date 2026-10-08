@@ -1,5 +1,5 @@
 /* =========================================================
-   СБРОС
+   RESET
 ========================================================= */
 
 * {
@@ -25,9 +25,14 @@ img {
   display: block;
 }
 
+button,
+textarea {
+  font-family: "Jost", sans-serif;
+}
+
 
 /* =========================================================
-   ШРИФТЫ
+   FONTS
 ========================================================= */
 
 @font-face {
@@ -40,7 +45,6 @@ img {
 
   font-display: swap;
 }
-
 
 @font-face {
   font-family: "Jost";
@@ -55,7 +59,7 @@ img {
 
 
 /* =========================================================
-   ОСНОВНОЙ КОНТЕЙНЕР
+   MAIN
 ========================================================= */
 
 .longread {
@@ -69,29 +73,22 @@ img {
 
 
 /* =========================================================
-   =========================================================
-   ПЕРВЫЙ БЛОК
-   =========================================================
-   ========================================================= */
+   БЛОК 1
+========================================================= */
 
 .hero {
   position: relative;
 
   width: 100vw;
-
   height: 61vw;
 
   overflow: hidden;
 }
 
-
-/* Фон */
-
 .hero-background {
   position: absolute;
 
-  left: 0;
-  top: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
@@ -99,16 +96,11 @@ img {
   background-image: url("/images/background.png");
 
   background-size: cover;
-
   background-position: center center;
-
   background-repeat: no-repeat;
 
   z-index: 1;
 }
-
-
-/* Белая плашка */
 
 .hero-panel {
   position: absolute;
@@ -124,16 +116,12 @@ img {
   border-radius: 3.125vw;
 
   border: none;
-
   box-shadow: none;
 
   overflow: hidden;
 
   z-index: 2;
 }
-
-
-/* Заголовок */
 
 .main-title {
   position: absolute;
@@ -142,7 +130,6 @@ img {
   top: 1.4vw;
 
   margin: 0;
-  padding: 0;
 
   font-family: "Pusia", sans-serif;
 
@@ -161,9 +148,6 @@ img {
   z-index: 10;
 }
 
-
-/* Хэштеги */
-
 .hashtags {
   position: absolute;
 
@@ -177,9 +161,6 @@ img {
   align-items: center;
 
   justify-content: space-between;
-
-  margin: 0;
-  padding: 0;
 
   font-family: "Jost", sans-serif;
 
@@ -195,13 +176,8 @@ img {
 }
 
 .hashtags span {
-  display: block;
-
   white-space: nowrap;
 }
-
-
-/* Первая голубая плашка */
 
 .subtitle-wrapper {
   position: absolute;
@@ -210,12 +186,10 @@ img {
   top: 6.25vw;
 
   width: 42.27vw;
-
   height: 11.1vw;
 
   z-index: 10;
 }
-
 
 .subtitle-box {
   position: absolute;
@@ -230,9 +204,9 @@ img {
 
   align-items: center;
 
-  background: #E2F5FB;
-
   padding: 0 0.7vw;
+
+  background: #E2F5FB;
 
   font-family: "Jost", sans-serif;
 
@@ -247,14 +221,10 @@ img {
   z-index: 2;
 }
 
-
-/* Линии */
-
 .decor-line {
   position: absolute;
 
   width: 0.234vw;
-
   height: 11.1vw;
 
   background: #00B7FF;
@@ -297,9 +267,6 @@ img {
   transform: translate(-50%, 50%);
 }
 
-
-/* Фотография первого блока */
-
 .photo-wrapper {
   position: absolute;
 
@@ -317,22 +284,11 @@ img {
 }
 
 .hero-photo {
-  position: absolute;
-
-  inset: 0;
-
   width: 100%;
   height: 100%;
 
   object-fit: cover;
-
-  object-position: center center;
-
-  z-index: 1;
 }
-
-
-/* Затемнение */
 
 .photo-overlay {
   position: absolute;
@@ -342,26 +298,20 @@ img {
   background: rgba(0, 0, 0, 0.46);
 
   backdrop-filter: blur(1.8vw);
-
   -webkit-backdrop-filter: blur(1.8vw);
 
   border-radius: 3.125vw;
-
-  z-index: 2;
 }
 
 
 /* =========================================================
-   =========================================================
-   ВТОРОЙ БЛОК
-   =========================================================
-   ========================================================= */
+   БЛОК 2
+========================================================= */
 
 .second-section {
   position: relative;
 
   width: 100vw;
-
   height: 55vw;
 
   background: #ffffff;
@@ -369,14 +319,10 @@ img {
   overflow: hidden;
 }
 
-
-/* Текст */
-
 .second-text-column {
   position: absolute;
 
   left: 5vw;
-
   top: 7.8vw;
 
   width: 43vw;
@@ -384,18 +330,12 @@ img {
   z-index: 5;
 }
 
-
-/* Заголовок */
-
 .second-title {
-  position: relative;
-
   display: block;
 
   width: max-content;
 
   margin: 0;
-  padding: 0;
 
   font-family: "Pusia", sans-serif;
 
@@ -409,13 +349,8 @@ img {
 
   color: #00B7FF;
 
-  text-transform: uppercase;
-
   white-space: nowrap;
 }
-
-
-/* Голубая плашка */
 
 .second-subtitle-wrapper {
   position: relative;
@@ -433,10 +368,10 @@ img {
   position: absolute;
 
   left: 0;
-  top: 0;
+  top: 0.7vw;
 
   width: 42.27vw;
-  height: 25.8vw;
+  height: 24.4vw;
 
   display: flex;
 
@@ -460,16 +395,8 @@ img {
 }
 
 .second-subtitle-box span {
-  display: block;
-
   width: 100%;
-
-  margin: 0;
-  padding: 0;
 }
-
-
-/* Линии */
 
 .second-decor-line {
   position: absolute;
@@ -492,9 +419,6 @@ img {
   right: 0;
   top: 0;
 }
-
-
-/* Круги */
 
 .second-decor-dot {
   position: absolute;
@@ -521,18 +445,13 @@ img {
   transform: translate(-50%, 50%);
 }
 
-
-/* Фотография */
-
 .second-photo-column {
   position: absolute;
 
   left: 51.8vw;
-
   top: 17.2vw;
 
   width: 46.17vw;
-
   height: 33.36vw;
 
   z-index: 3;
@@ -545,7 +464,6 @@ img {
   top: 0;
 
   width: 46.17vw;
-
   height: 33.36vw;
 
   overflow: hidden;
@@ -560,12 +478,7 @@ img {
   height: 100%;
 
   object-fit: cover;
-
-  object-position: center center;
 }
-
-
-/* Оранжевая рамка */
 
 .orange-frame {
   position: absolute;
@@ -574,7 +487,6 @@ img {
   top: -1.5vw;
 
   width: 47.62vw;
-
   height: 31.66vw;
 
   border: 0.234vw solid #FF6436;
@@ -583,31 +495,18 @@ img {
 
   transform: rotate(-12.75deg);
 
-  transform-origin: center center;
-
-  background: transparent;
-
   z-index: 2;
 }
 
 
 /* =========================================================
-   =========================================================
-   ТРЕТИЙ БЛОК
-   =========================================================
-   ========================================================= */
+   БЛОК 3
+========================================================= */
 
 .third-section {
   position: relative;
 
   width: 100vw;
-
-  /*
-    Высоту увеличиваем,
-    чтобы синяя область и карточки
-    полностью помещались.
-  */
-
   height: 70vw;
 
   background: #ffffff;
@@ -615,22 +514,17 @@ img {
   overflow: hidden;
 }
 
-
-/* Заголовок */
-
 .third-title {
   position: absolute;
 
   left: 50%;
-
   top: 3vw;
 
   transform: translateX(-50%);
 
-  margin: 0;
-  padding: 0;
-
   width: max-content;
+
+  margin: 0;
 
   font-family: "Pusia", sans-serif;
 
@@ -644,79 +538,41 @@ img {
 
   color: #00B7FF;
 
-  text-transform: uppercase;
-
   white-space: nowrap;
-
-  z-index: 5;
 }
-
-
-/* =========================================================
-   СИНЯЯ ОБЛАСТЬ
-========================================================= */
 
 .history-slider {
   position: absolute;
 
   left: 0;
-
   top: 10vw;
 
   width: 100vw;
-
-  /*
-    Теперь высоты хватает карточкам
-    целиком поместиться внутри.
-  */
-
   height: 59vw;
+
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  gap: 1.484vw;
+
+  align-items: flex-start;
+
+  padding: 3vw 3.5vw;
 
   background: #00B7FF;
 
   overflow-x: auto;
-
-  /*
-    Вертикального обрезания больше нет,
-    карточки полностью помещаются.
-  */
-
   overflow-y: hidden;
 
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 1.484vw;
-
-  padding-left: 3.5vw;
-
-  padding-right: 3.5vw;
-
-  padding-top: 3vw;
-
-  padding-bottom: 3vw;
-
-  scroll-behavior: smooth;
-
-  flex-wrap: nowrap;
-
   scrollbar-width: none;
-
-  z-index: 2;
+  -ms-overflow-style: none;
 }
-
-
-/* Убираем горизонтальный scrollbar */
 
 .history-slider::-webkit-scrollbar {
   display: none;
 }
-
-
-/* =========================================================
-   БЕЛЫЕ КАРТОЧКИ
-========================================================= */
 
 .history-card {
   position: relative;
@@ -724,56 +580,27 @@ img {
   flex: 0 0 46.17vw;
 
   width: 46.17vw;
-
   height: 52.58vw;
-
-  background: #ffffff;
-
-  /*
-    СИЛЬНЕЕ скругление.
-  */
-
-  border-radius: 2.5vw;
-
-  border: none;
-
-  box-shadow: none;
 
   padding: 2.27vw;
 
-  /*
-    Карточка полностью помещается
-    в синей области.
-  */
+  background: #ffffff;
+
+  border-radius: 3.2vw;
 
   overflow: hidden;
 }
 
-
-/* =========================================================
-   ФОТО
-========================================================= */
-
 .history-image {
   width: 41.64vw;
-
   height: 22.42vw;
-
-  object-fit: cover;
-
-  object-position: center center;
 
   margin: 0 auto;
 
+  object-fit: cover;
+
   border-radius: 1.5vw;
-
-  flex-shrink: 0;
 }
-
-
-/* =========================================================
-   ЗАГОЛОВОК + ЛИНИЯ
-========================================================= */
 
 .history-card-heading {
   display: flex;
@@ -781,18 +608,13 @@ img {
   align-items: center;
 
   width: 100%;
+  height: 3.6vw;
 
   margin-top: 1.45vw;
-
-  height: 3.6vw;
 }
-
-
-/* Подзаголовок */
 
 .history-card-heading h3 {
   margin: 0;
-  padding: 0;
 
   font-family: "Jost", sans-serif;
 
@@ -809,11 +631,6 @@ img {
   flex-shrink: 0;
 }
 
-
-/* =========================================================
-   ПОЛОСКИ
-========================================================= */
-
 .history-lines {
   position: relative;
 
@@ -822,18 +639,12 @@ img {
   height: 0.78vw;
 
   margin-left: 1.4vw;
-
-  min-width: 0;
 }
-
 
 .history-line-background {
   position: absolute;
 
-  left: 0;
-  top: 0;
-
-  width: 100%;
+  inset: 0;
 
   height: 0.78vw;
 
@@ -841,7 +652,6 @@ img {
 
   border-radius: 999px;
 }
-
 
 .history-line-progress {
   position: absolute;
@@ -856,48 +666,25 @@ img {
   border-radius: 999px;
 }
 
-
-/* Античность */
-
 .history-progress-one {
   width: 82%;
 }
-
-
-/* Средневековье */
 
 .history-progress-two {
   width: 42%;
 }
 
-
-/* Россия */
-
 .history-progress-three {
   width: 50%;
 }
 
-
-/* =========================================================
-   ТЕКСТ В КАРТОЧКАХ
-========================================================= */
-
 .history-text {
   width: 100%;
-
   height: 17.8vw;
 
   margin-top: 0.8vw;
 
-  padding-right: 0.5vw;
-
-  /*
-    Скролл остаётся.
-    Но scrollbar полностью невидимый.
-  */
-
   overflow-y: auto;
-
   overflow-x: hidden;
 
   font-family: "Jost", sans-serif;
@@ -910,46 +697,27 @@ img {
 
   color: #000000;
 
-  /*
-    Firefox:
-    scrollbar занимает место,
-    но визуально не отображается.
-  */
-
   scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
-
-/*
-   Chrome / Edge / Safari:
-   полностью скрываем полосу.
-*/
 
 .history-text::-webkit-scrollbar {
   display: none;
-
-  width: 0;
-  height: 0;
 }
-
 
 .history-text p {
   margin: 0;
-  padding: 0;
 }
 
 
 /* =========================================================
-   =========================================================
-   ЧЕТВЁРТЫЙ БЛОК
-   =========================================================
-   ========================================================= */
+   БЛОК 4
+========================================================= */
 
 .fourth-section {
   position: relative;
 
   width: 100vw;
-
   height: 55vw;
 
   background: #ffffff;
@@ -957,31 +725,17 @@ img {
   overflow: hidden;
 }
 
-
-/* =========================================================
-   ФОТО СЛЕВА
-========================================================= */
-
 .fourth-photo-column {
   position: absolute;
 
-  /*
-    Фото находится слева.
-  */
-
   left: 2vw;
-
   top: 11vw;
 
   width: 46.17vw;
-
   height: 33.36vw;
 
   z-index: 3;
 }
-
-
-/* Фото */
 
 .fourth-photo {
   position: absolute;
@@ -990,30 +744,19 @@ img {
   top: 0;
 
   width: 46.17vw;
-
   height: 33.36vw;
 
   overflow: hidden;
 
   border-radius: 3.125vw;
-
-  z-index: 3;
 }
-
 
 .fourth-photo img {
   width: 100%;
   height: 100%;
 
   object-fit: cover;
-
-  object-position: center center;
 }
-
-
-/* =========================================================
-   ОРАНЖЕВАЯ РАМКА ЧЕТВЁРТОГО БЛОКА
-========================================================= */
 
 .fourth-orange-frame {
   position: absolute;
@@ -1022,7 +765,6 @@ img {
   top: -1.5vw;
 
   width: 47.62vw;
-
   height: 31.66vw;
 
   border: 0.234vw solid #FF6436;
@@ -1031,27 +773,13 @@ img {
 
   transform: rotate(-12.75deg);
 
-  transform-origin: center center;
-
-  background: transparent;
-
   z-index: 2;
 }
-
-
-/* =========================================================
-   ТЕКСТ СПРАВА
-========================================================= */
 
 .fourth-text-column {
   position: absolute;
 
-  /*
-    Справа от фотографии.
-  */
-
   left: 51.8vw;
-
   top: 7.8vw;
 
   width: 43vw;
@@ -1059,20 +787,12 @@ img {
   z-index: 5;
 }
 
-
-/* =========================================================
-   ЗАГОЛОВОК
-========================================================= */
-
 .fourth-title {
-  position: relative;
-
   display: block;
 
   width: max-content;
 
   margin: 0;
-  padding: 0;
 
   font-family: "Pusia", sans-serif;
 
@@ -1086,15 +806,8 @@ img {
 
   color: #00B7FF;
 
-  text-transform: uppercase;
-
   white-space: nowrap;
 }
-
-
-/* =========================================================
-   ГОЛУБАЯ ПЛАШКА
-========================================================= */
 
 .fourth-subtitle-wrapper {
   position: relative;
@@ -1102,27 +815,19 @@ img {
   margin-top: 1.6vw;
 
   width: 42.27vw;
-
-  /*
-    Высота рассчитана
-    под весь текст.
-  */
-
-  height: 22.8vw;
+  height: 25.8vw;
 
   z-index: 5;
 }
-
 
 .fourth-subtitle-box {
   position: absolute;
 
   left: 0;
-  top: 0;
+  top: 0.7vw;
 
   width: 42.27vw;
-
-  height: 22.8vw;
+  height: 24.4vw;
 
   display: flex;
 
@@ -1145,55 +850,35 @@ img {
   z-index: 2;
 }
 
-
 .fourth-subtitle-box span {
-  display: block;
-
   width: 100%;
-
-  margin: 0;
-  padding: 0;
 }
-
-
-/* =========================================================
-   ЛИНИИ
-========================================================= */
 
 .fourth-decor-line {
   position: absolute;
 
   width: 0.234vw;
-
-  height: 22.8vw;
+  height: 25.8vw;
 
   background: #00B7FF;
 
   z-index: 5;
 }
 
-
 .fourth-decor-line-left {
   left: 0;
   top: 0;
 }
-
 
 .fourth-decor-line-right {
   right: 0;
   top: 0;
 }
 
-
-/* =========================================================
-   КРУГИ
-========================================================= */
-
 .fourth-decor-dot {
   position: absolute;
 
   width: 1.25vw;
-
   height: 1.25vw;
 
   border-radius: 50%;
@@ -1201,19 +886,15 @@ img {
   background: #00B7FF;
 }
 
-
 .fourth-decor-line-left .fourth-decor-dot {
   left: 50%;
-
   top: 0;
 
   transform: translate(-50%, -50%);
 }
 
-
 .fourth-decor-line-right .fourth-decor-dot {
   left: 50%;
-
   bottom: 0;
 
   transform: translate(-50%, 50%);
@@ -1221,13 +902,688 @@ img {
 
 
 /* =========================================================
-   ЗАГОТОВКА ПОД СЛЕДУЮЩИЕ БЛОКИ
+   БЛОК 5
 ========================================================= */
 
-.content-placeholder {
-  width: 100%;
+.fifth-section {
+  position: relative;
+
+  width: 100vw;
 
   min-height: 100vw;
 
+  padding-top: 5vw;
+
   background: #ffffff;
+
+  overflow: hidden;
+}
+
+.fifth-title {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  font-family: "Pusia", sans-serif;
+
+  font-size: 3.75vw;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  color: #00B7FF;
+
+  white-space: nowrap;
+}
+
+.fifth-content {
+  width: 92vw;
+
+  margin: 4vw auto 0;
+
+  display: grid;
+
+  grid-template-columns: 46.17vw 46.17vw;
+
+  grid-template-rows: 47.73vw 47.73vw;
+
+  column-gap: 1.66vw;
+  row-gap: 3vw;
+
+  align-items: start;
+}
+
+
+/* Фото 6 */
+
+.fifth-photo-six {
+  width: 46.17vw;
+  height: 47.73vw;
+
+  overflow: hidden;
+
+  border-radius: 3.125vw;
+}
+
+.fifth-photo-six img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* Правая верхняя */
+
+.fifth-right-top {
+  width: 46.17vw;
+  height: 47.73vw;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.fifth-main-text {
+  width: 100%;
+
+  margin: 0;
+
+  padding: 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 400;
+
+  line-height: 1.35;
+
+  color: #000000;
+}
+
+.fifth-photo-seven {
+  width: 46.17vw;
+  height: 25vw;
+
+  margin-top: 1.2vw;
+
+  object-fit: cover;
+
+  border-radius: 3.125vw;
+}
+
+
+/* Нижняя левая */
+
+.fifth-left-bottom {
+  width: 46.17vw;
+  height: 47.73vw;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-start;
+}
+
+
+/* Голубая плашка — стала немного ниже */
+
+.fifth-blue-wrapper {
+  position: relative;
+
+  width: 46.17vw;
+  height: 18.2vw;
+}
+
+.fifth-blue-box {
+  position: absolute;
+
+  left: 0;
+  top: 0.7vw;
+
+  width: 46.17vw;
+  height: 16.8vw;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 1vw;
+
+  background: #E2F5FB;
+
+  z-index: 2;
+}
+
+.fifth-blue-box p {
+  width: 100%;
+
+  margin: 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 400;
+
+  line-height: 1.35;
+
+  color: #000000;
+}
+
+
+/* Линии выше и ниже плашки */
+
+.fifth-blue-line {
+  position: absolute;
+
+  top: 0;
+
+  width: 0.234vw;
+  height: 18.2vw;
+
+  background: #00B7FF;
+
+  z-index: 5;
+}
+
+.fifth-blue-line-left {
+  left: 0;
+}
+
+.fifth-blue-line-right {
+  right: 0;
+}
+
+.fifth-blue-dot {
+  position: absolute;
+
+  width: 1.25vw;
+  height: 1.25vw;
+
+  border-radius: 50%;
+
+  background: #00B7FF;
+}
+
+.fifth-blue-line-left .fifth-blue-dot {
+  left: 50%;
+  top: 0;
+
+  transform: translate(-50%, -50%);
+}
+
+.fifth-blue-line-right .fifth-blue-dot {
+  left: 50%;
+  bottom: 0;
+
+  transform: translate(-50%, 50%);
+}
+
+
+/* Обычный текст — увеличенный отступ */
+
+.fifth-bottom-text {
+  width: 46.17vw;
+
+  margin: 6.3vw 0 0;
+
+  padding: 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 400;
+
+  line-height: 1.35;
+
+  color: #000000;
+}
+
+
+/* Фото 8 */
+
+.fifth-photo-eight {
+  width: 46.17vw;
+  height: 47.73vw;
+
+  overflow: hidden;
+
+  border-radius: 3.125vw;
+}
+
+.fifth-photo-eight img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   БЛОК 6
+========================================================= */
+
+.sixth-section {
+  position: relative;
+
+  width: 100vw;
+
+  min-height: 45vw;
+
+  background: #ffffff;
+
+  padding-top: 7vw;
+  padding-bottom: 8vw;
+
+  overflow: hidden;
+}
+
+
+/* Заголовок */
+
+.sixth-title {
+  width: 82vw;
+
+  margin: 0 auto;
+
+  text-align: center;
+
+  font-family: "Pusia", sans-serif;
+
+  font-size: 3.75vw;
+
+  font-weight: 700;
+
+  line-height: 1.12;
+
+  letter-spacing: -0.02em;
+
+  color: #00B7FF;
+}
+
+
+/* Плашка */
+
+.sixth-subtitle-wrapper {
+  position: relative;
+
+  width: 52vw;
+  height: 12vw;
+
+  margin: 4vw auto 0;
+}
+
+.sixth-subtitle-box {
+  position: absolute;
+
+  left: 0;
+  top: 0.7vw;
+
+  width: 52vw;
+  height: 10.6vw;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 1vw 2vw;
+
+  background: #E2F5FB;
+
+  z-index: 2;
+}
+
+.sixth-subtitle-box p {
+  width: 100%;
+
+  margin: 0;
+
+  text-align: center;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 400;
+
+  line-height: 1.35;
+
+  color: #000000;
+}
+
+
+/* Линии длиннее плашки */
+
+.sixth-decor-line {
+  position: absolute;
+
+  top: 0;
+
+  width: 0.234vw;
+  height: 12vw;
+
+  background: #00B7FF;
+
+  z-index: 5;
+}
+
+.sixth-decor-line-left {
+  left: 0;
+}
+
+.sixth-decor-line-right {
+  right: 0;
+}
+
+.sixth-decor-dot {
+  position: absolute;
+
+  width: 1.25vw;
+  height: 1.25vw;
+
+  border-radius: 50%;
+
+  background: #00B7FF;
+}
+
+.sixth-decor-line-left .sixth-decor-dot {
+  left: 50%;
+  top: 0;
+
+  transform: translate(-50%, -50%);
+}
+
+.sixth-decor-line-right .sixth-decor-dot {
+  left: 50%;
+  bottom: 0;
+
+  transform: translate(-50%, 50%);
+}
+
+
+/* =========================================================
+   БЛОК 7
+========================================================= */
+
+.seventh-section {
+  position: relative;
+
+  width: 100vw;
+
+  min-height: 55.39vw;
+
+  background: #E2F5FB;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   КОНТЕНТ 7 БЛОКА
+========================================================= */
+
+.feedback-content {
+  width: 100%;
+
+  height: 47.66vw;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  padding: 5.63vw 7.42vw 0;
+}
+
+
+/* =========================================================
+   БЕЛАЯ ПЛАШКА ФОРМЫ
+========================================================= */
+
+.feedback-form-card {
+  width: 46.09vw;
+  height: 44.14vw;
+
+  padding: 4.14vw 2.73vw;
+
+  background: #ffffff;
+
+  border-radius: 3.125vw;
+
+  box-shadow: none;
+  border: none;
+}
+
+
+/* =========================================================
+   ФОРМА
+========================================================= */
+
+.feedback-form-card form {
+  width: 100%;
+}
+
+.feedback-input-area {
+  width: 43.36vw;
+  height: 28.52vw;
+
+  margin: 0;
+}
+
+.feedback-input-area textarea {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  resize: none;
+
+  border: none;
+  outline: none;
+
+  border-radius: 0.8vw;
+
+  background: #E2F5FB;
+
+  padding: 1.4vw;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 400;
+
+  line-height: 1.35;
+
+  color: #000000;
+}
+
+.feedback-input-area textarea::placeholder {
+  color: #A09898;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   КНОПКА
+========================================================= */
+
+.feedback-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 43.36vw;
+  height: 7.34vw;
+
+  margin-top: 1vw;
+
+  border: none;
+  outline: none;
+
+  border-radius: 1.09vw;
+
+  background: #00B7FF;
+
+  color: #ffffff;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+}
+
+.feedback-button:hover {
+  opacity: 0.88;
+}
+
+.feedback-button:active {
+  opacity: 0.75;
+}
+
+
+/* =========================================================
+   АНОНИМНОСТЬ
+========================================================= */
+
+.anonymous-text {
+  margin: 0.55vw 0 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 1.875vw;
+
+  font-weight: 300;
+
+  line-height: 1;
+
+  color: #000000;
+}
+
+
+/* =========================================================
+   СООБЩЕНИЕ ПОСЛЕ ОТПРАВКИ
+========================================================= */
+
+.success-message {
+  margin: 0.8vw 0 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 1.7vw;
+
+  font-weight: 400;
+
+  color: #00B7FF;
+}
+
+
+/* =========================================================
+   ТЕКСТ СПРАВА
+========================================================= */
+
+.feedback-text {
+  width: 43vw;
+
+  padding-top: 4.5vw;
+}
+
+.feedback-text h2 {
+  margin: 0 0 2.5vw;
+
+  font-family: "Pusia", sans-serif;
+
+  font-size: 3.75vw;
+
+  font-weight: 700;
+
+  line-height: 1.05;
+
+  color: #00B7FF;
+
+  text-align: left;
+}
+
+.feedback-text p {
+  margin: 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 400;
+
+  line-height: 1.38;
+
+  color: #000000;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100vw;
+  height: 7.73vw;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 2.5vw;
+
+  background: #00B7FF;
+
+  color: #ffffff;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 1.25vw;
+
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+.footer-author,
+.footer-code,
+.footer-curator {
+  width: 33.333%;
+
+  white-space: nowrap;
+}
+
+.footer-author {
+  text-align: left;
+}
+
+.footer-code {
+  text-align: center;
+}
+
+.footer-curator {
+  text-align: right;
 }
