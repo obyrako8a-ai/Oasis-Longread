@@ -14,12 +14,15 @@ function App() {
 
         <div className="hero-panel">
 
+          {/* Заголовок */}
           <h1 className="main-title">
             КУЛЬТУРА
             <br />
             СТЫДА
           </h1>
 
+
+          {/* Хэштеги */}
           <div className="hashtags">
             <span>#табу</span>
             <span>#туалет</span>
@@ -27,6 +30,8 @@ function App() {
             <span>#инфраструктура</span>
           </div>
 
+
+          {/* Голубая плашка */}
           <div className="subtitle-wrapper">
 
             <div className="decor-line decor-line-left">
@@ -47,6 +52,8 @@ function App() {
 
           </div>
 
+
+          {/* Фотография */}
           <div className="photo-wrapper">
 
             <img
@@ -70,84 +77,91 @@ function App() {
 
       <section className="second-section">
 
-        {/* ЛЕВАЯ ЧАСТЬ — ФОТО */}
 
-        <div className="second-photo-column">
-
-          {/* Оранжевая рамка */}
-          <div className="orange-frame"></div>
-
-          {/* Фотография */}
-          <div className="second-photo">
-            <img
-              src="/images/1_photo.png"
-              alt=""
-            />
-          </div>
-
-        </div>
-
-
-        {/* ПРАВАЯ ЧАСТЬ — ТЕКСТ */}
+        {/* =================================================
+            ЛЕВАЯ ЧАСТЬ — ТЕКСТ
+        ================================================== */}
 
         <div className="second-text-column">
 
-          {/* Заголовок */}
+          {/* Заголовок — теперь в одну строку */}
           <h2 className="second-title">
-            ПОЧЕМУ НАМ
-            <br />
-            НЕЛОВКО?
+            ПОЧЕМУ НАМ НЕЛОВКО?
           </h2>
 
 
-          {/* Голубая плашка */}
-
+          {/* ОДНА большая голубая плашка */}
           <div className="second-subtitle-wrapper">
 
+            {/* Левая линия */}
             <div className="second-decor-line second-decor-line-left">
               <div className="second-decor-dot"></div>
             </div>
 
+
+            {/* Весь текст находится внутри одной плашки */}
             <div className="second-subtitle-box">
+
               <span>
                 Тема туалетов касается каждого,
                 <br />
+
                 но считается неприличной.
+                <br />
+
+                О базовых потребностях
+                <br />
+
+                не принято говорить вслух, появляется неловкость,
+                <br />
+
+                будто это что-то грязное
+                <br />
+
+                и неприемлемое.
               </span>
+
             </div>
 
+
+            {/* Правая линия */}
             <div className="second-decor-line second-decor-line-right">
               <div className="second-decor-dot"></div>
             </div>
 
           </div>
 
+        </div>
 
-          {/* Основной текст */}
 
-          <div className="second-text">
+        {/* =================================================
+            ПРАВАЯ ЧАСТЬ — ФОТО
+        ================================================== */}
 
-            <p>
-              О базовых потребностях
-              <br />
-              не принято говорить вслух,
-              <br />
-              появляется неловкость,
-              <br />
-              будто это что-то грязное
-              <br />
-              и неприемлемое.
-            </p>
+        <div className="second-photo-column">
+
+          {/* Оранжевая рамка */}
+          <div className="orange-frame"></div>
+
+
+          {/* Фотография */}
+          <div className="second-photo">
+
+            <img
+              src="/images/1_photo.png"
+              alt=""
+            />
 
           </div>
 
         </div>
 
+
       </section>
 
 
       {/* =====================================================
-          ЗАГОТОВКА ПОД ПОСЛЕДУЮЩИЕ БЛОКИ
+          ЗАГОТОВКА ПОД СЛЕДУЮЩИЕ БЛОКИ
       ====================================================== */}
 
       <section className="content-placeholder">
