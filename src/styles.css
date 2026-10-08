@@ -1,29 +1,66 @@
-/* =========================================================
-   RESET
-========================================================= */
+@font-face {
+  font-family: "Pusia";
+  src: local("Pusia");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: local("Jost");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: local("Jost");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: local("Jost");
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+:root {
+  --blue: #00B7FF;
+  --light-blue: #E2F5FB;
+  --orange: #FF6436;
+  --grey: #A09898;
+
+  --design-width: 1280;
+}
+
 
 * {
   box-sizing: border-box;
 }
 
+
 html {
   margin: 0;
   padding: 0;
-  background: #ffffff;
+  scroll-behavior: smooth;
 }
+
 
 body {
   margin: 0;
   padding: 0;
+
+  background: #fff;
+  color: #000;
 
   overflow-x: hidden;
 
   font-family: "Jost", sans-serif;
 }
 
-img {
-  display: block;
-}
 
 button,
 textarea {
@@ -31,1507 +68,955 @@ textarea {
 }
 
 
-/* =========================================================
-   FONTS
-========================================================= */
-
-@font-face {
-  font-family: "Pusia";
-
-  src: url("/fonts/pusia/Pusia-Bold.woff2") format("woff2");
-
-  font-weight: 700;
-  font-style: normal;
-
-  font-display: swap;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-@font-face {
-  font-family: "Jost";
-
-  src: url("/fonts/jost/Jost-Variable.woff2") format("woff2");
-
-  font-weight: 100 900;
-  font-style: normal;
-
-  font-display: swap;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
 
 .longread {
   width: 100%;
-
-  margin: 0;
-  padding: 0;
-
-  background: #ffffff;
+  overflow: hidden;
 }
 
 
 /* =========================================================
-   БЛОК 1
+   COMMON
+========================================================= */
+
+.section {
+  width: 100%;
+  position: relative;
+}
+
+
+.section-title {
+  margin: 0;
+
+  color: var(--blue);
+
+  font-family: "Pusia", sans-serif;
+  font-weight: 700;
+
+  font-size: 3.75vw;
+  line-height: 1.05;
+}
+
+
+.accent-wrap {
+  position: relative;
+
+  display: inline-block;
+
+  --line-height: 100%;
+}
+
+
+.accent-box {
+  position: relative;
+
+  background: var(--light-blue);
+
+  color: #000;
+
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+
+  z-index: 2;
+}
+
+
+.accent-box p {
+  margin: 0;
+}
+
+
+.accent-line {
+  position: absolute;
+
+  width: 0.234vw;
+
+  background: var(--blue);
+
+  z-index: 3;
+
+  border-radius: 999px;
+}
+
+
+.accent-line::after {
+  content: "";
+
+  position: absolute;
+
+  width: 1.1vw;
+  height: 1.1vw;
+
+  background: var(--blue);
+
+  border-radius: 50%;
+}
+
+
+.accent-line-left {
+  left: 0;
+
+  top: -1.25vw;
+  bottom: -1.25vw;
+}
+
+
+.accent-line-left::after {
+  top: -0.55vw;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+
+.accent-line-right {
+  right: 0;
+
+  top: -1.25vw;
+  bottom: -1.25vw;
+}
+
+
+.accent-line-right::after {
+  bottom: -0.55vw;
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   1. HERO
 ========================================================= */
 
 .hero {
   position: relative;
 
-  width: 100vw;
-  height: 61vw;
-
-  overflow: hidden;
-}
-
-.hero-background {
-  position: absolute;
-
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
+  min-height: 56.25vw;
 
   background-image: url("/images/background.png");
-
-  background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
 
-  z-index: 1;
+  padding-top: 3.125vw;
+  padding-bottom: 3.125vw;
 }
+
 
 .hero-panel {
-  position: absolute;
-
-  left: 3.125vw;
-  top: 3.125vw;
-
   width: 93.75vw;
-  height: 51.328vw;
+  height: 51.33vw;
 
-  background: #ffffff;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding:
+    1.95vw
+    2.5vw
+    2.5vw;
+
+  background: #fff;
 
   border-radius: 3.125vw;
-
-  border: none;
-  box-shadow: none;
-
-  overflow: hidden;
-
-  z-index: 2;
 }
 
-.main-title {
-  position: absolute;
 
-  left: 2.5vw;
-  top: 1.4vw;
-
-  margin: 0;
-
-  font-family: "Pusia", sans-serif;
-
-  font-size: 7.5vw;
-
-  font-weight: 700;
-
-  line-height: 0.98;
-
-  letter-spacing: -0.035em;
-
-  color: #00B7FF;
-
-  text-transform: uppercase;
-
-  z-index: 10;
-}
-
-.hashtags {
-  position: absolute;
-
-  left: 47vw;
-  top: 1.65vw;
-
-  width: 42.27vw;
-
+.hero-top {
   display: flex;
 
-  align-items: center;
-
   justify-content: space-between;
+  align-items: flex-start;
 
-  font-family: "Jost", sans-serif;
-
-  font-size: 1.875vw;
-
-  font-weight: 300;
-
-  line-height: 1.2;
-
-  color: #000000;
-
-  z-index: 10;
+  gap: 3vw;
 }
 
-.hashtags span {
+
+.hero-title {
+  margin: 0;
+
+  color: var(--blue);
+
+  font-family: "Pusia", sans-serif;
+  font-weight: 700;
+
+  font-size: 7.5vw;
+  line-height: 0.91;
+
+  flex: 0 0 auto;
+}
+
+
+.hero-right {
+  width: 47vw;
+
+  padding-top: 0.5vw;
+}
+
+
+.hashtags {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  margin-bottom: 1.25vw;
+
+  color: #000;
+
+  font-family: "Jost", sans-serif;
+  font-size: 1.875vw;
+  font-weight: 300;
+
   white-space: nowrap;
 }
 
-.subtitle-wrapper {
-  position: absolute;
 
-  left: 47vw;
-  top: 6.25vw;
-
+.hero-accent {
   width: 42.27vw;
-  height: 11.1vw;
-
-  z-index: 10;
 }
 
-.subtitle-box {
-  position: absolute;
 
-  left: 0;
-  top: 0.9vw;
+.hero-accent .accent-box {
+  min-height: 8.75vw;
 
-  width: 42.27vw;
-  height: 8.75vw;
+  padding:
+    0.75vw
+    1vw;
 
   display: flex;
-
   align-items: center;
+}
 
-  padding: 0 0.7vw;
 
-  background: #E2F5FB;
-
-  font-family: "Jost", sans-serif;
-
+.hero-accent p {
   font-size: 2.8125vw;
-
-  font-weight: 400;
-
-  line-height: 1.42;
-
-  color: #000000;
-
-  z-index: 2;
+  line-height: 1.2;
 }
 
-.decor-line {
-  position: absolute;
 
-  width: 0.234vw;
-  height: 11.1vw;
+.hero-image-wrap {
+  position: relative;
 
-  background: #00B7FF;
+  width: 100%;
 
-  z-index: 5;
-}
+  margin-top: 2.5vw;
 
-.decor-line-left {
-  left: 0;
-  top: 0;
-}
-
-.decor-line-right {
-  right: 0;
-  top: 0;
-}
-
-.decor-dot {
-  position: absolute;
-
-  width: 1.25vw;
-  height: 1.25vw;
-
-  border-radius: 50%;
-
-  background: #00B7FF;
-}
-
-.decor-line-left .decor-dot {
-  left: 50%;
-  top: 0;
-
-  transform: translate(-50%, -50%);
-}
-
-.decor-line-right .decor-dot {
-  left: 50%;
-  bottom: 0;
-
-  transform: translate(-50%, 50%);
-}
-
-.photo-wrapper {
-  position: absolute;
-
-  left: 2.42vw;
-  top: 20.2vw;
-
-  width: 88.3vw;
-  height: 28.3vw;
+  height: 31.25vw;
 
   overflow: hidden;
 
   border-radius: 3.125vw;
-
-  z-index: 4;
 }
 
-.hero-photo {
+
+.hero-image {
   width: 100%;
   height: 100%;
 
   object-fit: cover;
 }
 
-.photo-overlay {
-  position: absolute;
 
+.hero-overlay {
+  position: absolute;
   inset: 0;
 
-  background: rgba(0, 0, 0, 0.46);
+  background: rgba(0, 0, 0, 0.34);
 
-  backdrop-filter: blur(1.8vw);
-  -webkit-backdrop-filter: blur(1.8vw);
+  border-radius: inherit;
 
-  border-radius: 3.125vw;
+  backdrop-filter: blur(23px);
+  -webkit-backdrop-filter: blur(23px);
 }
 
 
 /* =========================================================
-   БЛОК 2
+   2. WHY
 ========================================================= */
 
-.second-section {
+.section-two {
+  padding:
+    6.25vw
+    4.92vw
+    5vw;
+}
+
+
+.section-two .section-title {
+  margin-bottom: 2.5vw;
+}
+
+
+.two-layout {
+  display: grid;
+
+  grid-template-columns:
+    43.5vw
+    1fr;
+
+  align-items: center;
+
+  column-gap: 5vw;
+}
+
+
+.two-text {
+  width: 100%;
+}
+
+
+.two-text .accent-wrap {
+  width: 100%;
+}
+
+
+.two-text .accent-box {
+  width: 100%;
+
+  min-height: 22.2vw;
+
+  padding:
+    0.6vw
+    0.8vw;
+}
+
+
+.two-text .accent-box p {
+  font-size: 2.8125vw;
+  line-height: 1.52;
+}
+
+
+.framed-photo {
   position: relative;
-
-  width: 100vw;
-  height: 55vw;
-
-  background: #ffffff;
-
-  overflow: hidden;
-}
-
-.second-text-column {
-  position: absolute;
-
-  left: 5vw;
-  top: 7.8vw;
-
-  width: 43vw;
-
-  z-index: 5;
-}
-
-.second-title {
-  display: block;
-
-  width: max-content;
-
-  margin: 0;
-
-  font-family: "Pusia", sans-serif;
-
-  font-size: 3.75vw;
-
-  font-weight: 700;
-
-  line-height: 1;
-
-  letter-spacing: -0.025em;
-
-  color: #00B7FF;
-
-  white-space: nowrap;
-}
-
-.second-subtitle-wrapper {
-  position: relative;
-
-  margin-top: 1.6vw;
-
-  width: 42.27vw;
-
-  height: 25.8vw;
-
-  z-index: 5;
-}
-
-.second-subtitle-box {
-  position: absolute;
-
-  left: 0;
-  top: 0.7vw;
-
-  width: 42.27vw;
-  height: 24.4vw;
 
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  align-items: flex-start;
 
-  padding: 0.8vw 0.7vw;
+.photo-one {
+  width: 46.17vw;
 
-  background: #E2F5FB;
+  margin-left: auto;
 
-  font-family: "Jost", sans-serif;
+  min-height: 31vw;
+}
 
-  font-size: 2.30vw;
 
-  font-weight: 400;
+.photo-one img {
+  position: relative;
 
-  line-height: 1.42;
+  width: 46.17vw;
+  height: auto;
 
-  color: #000000;
+  border-radius: 3.125vw;
 
   z-index: 2;
 }
 
-.second-subtitle-box span {
-  width: 100%;
-}
-
-.second-decor-line {
-  position: absolute;
-
-  width: 0.234vw;
-
-  height: 25.8vw;
-
-  background: #00B7FF;
-
-  z-index: 5;
-}
-
-.second-decor-line-left {
-  left: 0;
-  top: 0;
-}
-
-.second-decor-line-right {
-  right: 0;
-  top: 0;
-}
-
-.second-decor-dot {
-  position: absolute;
-
-  width: 1.25vw;
-  height: 1.25vw;
-
-  border-radius: 50%;
-
-  background: #00B7FF;
-}
-
-.second-decor-line-left .second-decor-dot {
-  left: 50%;
-  top: 0;
-
-  transform: translate(-50%, -50%);
-}
-
-.second-decor-line-right .second-decor-dot {
-  left: 50%;
-  bottom: 0;
-
-  transform: translate(-50%, 50%);
-}
-
-.second-photo-column {
-  position: absolute;
-
-  left: 51.8vw;
-  top: 17.2vw;
-
-  width: 46.17vw;
-  height: 33.36vw;
-
-  z-index: 3;
-}
-
-.second-photo {
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
-  width: 46.17vw;
-  height: 33.36vw;
-
-  overflow: hidden;
-
-  border-radius: 3.125vw;
-
-  z-index: 3;
-}
-
-.second-photo img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
 
 .orange-frame {
   position: absolute;
 
-  left: -1.7vw;
-  top: -1.5vw;
+  width: 100%;
+  height: 100%;
 
-  width: 47.62vw;
-  height: 31.66vw;
-
-  border: 0.234vw solid #FF6436;
+  border: 0.234vw solid var(--orange);
 
   border-radius: 3.125vw;
 
   transform: rotate(-12.75deg);
 
-  z-index: 2;
+  z-index: 1;
+
+  pointer-events: none;
 }
 
 
 /* =========================================================
-   БЛОК 3
+   3. HISTORY
 ========================================================= */
 
-.third-section {
-  position: relative;
+.section-three {
+  padding-top: 1vw;
+}
 
-  width: 100vw;
-  height: 70vw;
 
-  background: #ffffff;
+.history-heading {
+  text-align: center;
+
+  margin-bottom: 3.2vw;
+}
+
+
+.history-background {
+  width: 100%;
+
+  min-height: 56.25vw;
+
+  padding:
+    1.25vw
+    1.875vw
+    1.875vw;
+
+  background: var(--blue);
 
   overflow: hidden;
 }
 
-.third-title {
-  position: absolute;
 
-  left: 50%;
-  top: 3vw;
-
-  transform: translateX(-50%);
-
-  width: max-content;
-
-  margin: 0;
-
-  font-family: "Pusia", sans-serif;
-
-  font-size: 3.75vw;
-
-  font-weight: 700;
-
-  line-height: 1;
-
-  letter-spacing: -0.025em;
-
-  color: #00B7FF;
-
-  white-space: nowrap;
-}
-
-.history-slider {
-  position: absolute;
-
-  left: 0;
-  top: 10vw;
-
-  width: 100vw;
-  height: 59vw;
+.history-track {
+  width: 100%;
 
   display: flex;
 
-  flex-direction: row;
-  flex-wrap: nowrap;
-
-  gap: 1.484vw;
-
-  align-items: flex-start;
-
-  padding: 3vw 3.5vw;
-
-  background: #00B7FF;
+  gap: 1.48vw;
 
   overflow-x: auto;
   overflow-y: hidden;
 
+  cursor: grab;
+
   scrollbar-width: none;
+
   -ms-overflow-style: none;
+
+  user-select: none;
+
+  padding:
+    0.3vw
+    0.2vw;
 }
 
-.history-slider::-webkit-scrollbar {
+
+.history-track::-webkit-scrollbar {
   display: none;
 }
 
-.history-card {
-  position: relative;
 
-  flex: 0 0 46.17vw;
-
-  width: 46.17vw;
-  height: 52.58vw;
-
-  padding: 2.27vw;
-
-  background: #ffffff;
-
-  border-radius: 3.2vw;
-
-  overflow: hidden;
+.history-track.is-dragging {
+  cursor: grabbing;
 }
 
-.history-image {
-  width: 41.64vw;
-  height: 22.42vw;
 
-  margin: 0 auto;
+.history-card {
+  flex: 0 0 46.17vw;
+
+  min-height: 52.58vw;
+
+  padding:
+    1.33vw;
+
+  background: #fff;
+
+  border-radius: 2.3vw;
+
+  overflow: hidden;
+
+  user-select: none;
+}
+
+
+.history-image {
+  width: 100%;
+  height: 22.42vw;
 
   object-fit: cover;
 
-  border-radius: 1.5vw;
+  border-radius: 1.2vw;
+
+  pointer-events: none;
 }
 
-.history-card-heading {
+
+.history-title-row {
   display: flex;
 
   align-items: center;
+  justify-content: space-between;
 
-  width: 100%;
-  height: 3.6vw;
+  gap: 1.5vw;
 
-  margin-top: 1.45vw;
+  margin-top: 1.25vw;
+  margin-bottom: 1vw;
 }
 
-.history-card-heading h3 {
+
+.history-title-row h3 {
   margin: 0;
 
   font-family: "Jost", sans-serif;
-
   font-size: 2.8125vw;
-
   font-weight: 500;
+}
 
-  line-height: 1;
 
-  color: #000000;
+.history-progress {
+  width: 11.7vw;
+  height: 0.55vw;
 
-  white-space: nowrap;
+  background: var(--light-blue);
+
+  border-radius: 999px;
+
+  overflow: hidden;
 
   flex-shrink: 0;
 }
 
-.history-lines {
-  position: relative;
 
-  flex: 1;
+.history-progress span {
+  display: block;
 
-  height: 0.78vw;
+  height: 100%;
 
-  margin-left: 1.4vw;
-}
-
-.history-line-background {
-  position: absolute;
-
-  inset: 0;
-
-  height: 0.78vw;
-
-  background: #E2F5FB;
+  background: var(--blue);
 
   border-radius: 999px;
 }
 
-.history-line-progress {
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
-  height: 0.78vw;
-
-  background: #00B7FF;
-
-  border-radius: 999px;
-}
-
-.history-progress-one {
-  width: 82%;
-}
-
-.history-progress-two {
-  width: 42%;
-}
-
-.history-progress-three {
-  width: 50%;
-}
 
 .history-text {
-  width: 100%;
-  height: 17.8vw;
-
-  margin-top: 0.8vw;
+  height: 25vw;
 
   overflow-y: auto;
-  overflow-x: hidden;
-
-  font-family: "Jost", sans-serif;
-
-  font-size: 2.8125vw;
-
-  font-weight: 400;
-
-  line-height: 1.32;
-
-  color: #000000;
 
   scrollbar-width: none;
+
   -ms-overflow-style: none;
+
+  font-family: "Jost", sans-serif;
+  font-size: 2.8125vw;
+  line-height: 1.55;
 }
+
 
 .history-text::-webkit-scrollbar {
   display: none;
 }
 
-.history-text p {
-  margin: 0;
-}
-
 
 /* =========================================================
-   БЛОК 4
+   4. INFLUENCE
 ========================================================= */
 
-.fourth-section {
-  position: relative;
-
-  width: 100vw;
-  height: 55vw;
-
-  background: #ffffff;
-
-  overflow: hidden;
-}
-
-.fourth-photo-column {
-  position: absolute;
-
-  left: 2vw;
-  top: 11vw;
-
-  width: 46.17vw;
-  height: 33.36vw;
-
-  z-index: 3;
-}
-
-.fourth-photo {
-  position: absolute;
-
-  left: 0;
-  top: 0;
-
-  width: 46.17vw;
-  height: 33.36vw;
-
-  overflow: hidden;
-
-  border-radius: 3.125vw;
-}
-
-.fourth-photo img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-}
-
-.fourth-orange-frame {
-  position: absolute;
-
-  left: -1.7vw;
-  top: -1.5vw;
-
-  width: 47.62vw;
-  height: 31.66vw;
-
-  border: 0.234vw solid #FF6436;
-
-  border-radius: 3.125vw;
-
-  transform: rotate(-12.75deg);
-
-  z-index: 2;
-}
-
-.fourth-text-column {
-  position: absolute;
-
-  left: 51.8vw;
-  top: 7.8vw;
-
-  width: 43vw;
-
-  z-index: 5;
-}
-
-.fourth-title {
-  display: block;
-
-  width: max-content;
-
-  margin: 0;
-
-  font-family: "Pusia", sans-serif;
-
-  font-size: 3.75vw;
-
-  font-weight: 700;
-
-  line-height: 1;
-
-  letter-spacing: -0.025em;
-
-  color: #00B7FF;
-
-  white-space: nowrap;
-}
-
-.fourth-subtitle-wrapper {
-  position: relative;
-
-  margin-top: 1.6vw;
-
-  width: 42.27vw;
-  height: 25.8vw;
-
-  z-index: 5;
-}
-
-.fourth-subtitle-box {
-  position: absolute;
-
-  left: 0;
-  top: 0.7vw;
-
-  width: 42.27vw;
-  height: 24.4vw;
-
-  display: flex;
-
-  align-items: flex-start;
-
-  padding: 0.8vw 0.7vw;
-
-  background: #E2F5FB;
-
-  font-family: "Jost", sans-serif;
-
-  font-size: 2.30vw;
-
-  font-weight: 400;
-
-  line-height: 1.42;
-
-  color: #000000;
-
-  z-index: 2;
-}
-
-.fourth-subtitle-box span {
-  width: 100%;
-}
-
-.fourth-decor-line {
-  position: absolute;
-
-  width: 0.234vw;
-  height: 25.8vw;
-
-  background: #00B7FF;
-
-  z-index: 5;
-}
-
-.fourth-decor-line-left {
-  left: 0;
-  top: 0;
-}
-
-.fourth-decor-line-right {
-  right: 0;
-  top: 0;
-}
-
-.fourth-decor-dot {
-  position: absolute;
-
-  width: 1.25vw;
-  height: 1.25vw;
-
-  border-radius: 50%;
-
-  background: #00B7FF;
-}
-
-.fourth-decor-line-left .fourth-decor-dot {
-  left: 50%;
-  top: 0;
-
-  transform: translate(-50%, -50%);
-}
-
-.fourth-decor-line-right .fourth-decor-dot {
-  left: 50%;
-  bottom: 0;
-
-  transform: translate(-50%, 50%);
+.section-four {
+  padding:
+    7vw
+    4.92vw
+    6vw;
 }
 
 
-/* =========================================================
-   БЛОК 5
-========================================================= */
-
-.fifth-section {
-  position: relative;
-
-  width: 100vw;
-
-  min-height: 100vw;
-
-  padding-top: 5vw;
-
-  background: #ffffff;
-
-  overflow: hidden;
-}
-
-.fifth-title {
-  width: 100%;
-
-  margin: 0;
-
-  text-align: center;
-
-  font-family: "Pusia", sans-serif;
-
-  font-size: 3.75vw;
-
-  font-weight: 700;
-
-  line-height: 1;
-
-  color: #00B7FF;
-
-  white-space: nowrap;
-}
-
-.fifth-content {
-  width: 92vw;
-
-  margin: 4vw auto 0;
-
+.four-layout {
   display: grid;
 
-  grid-template-columns: 46.17vw 46.17vw;
+  grid-template-columns:
+    47vw
+    43.5vw;
 
-  grid-template-rows: 47.73vw 47.73vw;
+  align-items: center;
 
-  column-gap: 1.66vw;
-  row-gap: 3vw;
+  column-gap: 4vw;
+}
+
+
+.photo-five {
+  width: 46.17vw;
+
+  min-height: 33vw;
+}
+
+
+.photo-five img {
+  position: relative;
+
+  width: 46.17vw;
+  height: auto;
+
+  border-radius: 3.125vw;
+
+  z-index: 2;
+}
+
+
+.four-text {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.four-text .section-title {
+  margin-bottom: 2.5vw;
+
+  white-space: nowrap;
+}
+
+
+.four-accent {
+  width: 41vw;
+}
+
+
+.four-accent .accent-box {
+  padding:
+    0.7vw
+    0.8vw;
+
+  min-height: 20vw;
+}
+
+
+.four-accent .accent-box p {
+  font-size: 2.8125vw;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   5. IF WE TALK
+========================================================= */
+
+.section-five {
+  padding:
+    4vw
+    4.92vw
+    7vw;
+}
+
+
+.five-heading {
+  text-align: center;
+
+  margin-bottom: 3.2vw;
+}
+
+
+.five-layout {
+  display: grid;
+
+  grid-template-columns:
+    46.17vw
+    46.17vw;
+
+  column-gap: 4vw;
 
   align-items: start;
 }
 
 
-/* Фото 6 */
-
-.fifth-photo-six {
-  width: 46.17vw;
-  height: 47.73vw;
-
-  overflow: hidden;
-
-  border-radius: 3.125vw;
+.five-left,
+.five-right {
+  position: relative;
 }
 
-.fifth-photo-six img {
-  width: 100%;
-  height: 100%;
+
+.photo-six {
+  width: 46.17vw;
+  height: 47.73vw;
 
   object-fit: cover;
+
+  border-radius: 2.8vw;
 }
 
 
-/* Правая верхняя */
-
-.fifth-right-top {
+.five-accent {
   width: 46.17vw;
-  height: 47.73vw;
 
-  display: flex;
-
-  flex-direction: column;
+  margin-top: 1.6vw;
 }
 
-.fifth-main-text {
-  width: 100%;
 
-  margin: 0;
+.five-accent .accent-box {
+  padding:
+    0.8vw;
+
+  min-height: 10vw;
+}
+
+
+.five-accent .accent-box p {
+  font-size: 2.8125vw;
+  line-height: 1.35;
+}
+
+
+.five-normal-text {
+  margin:
+    5vw 0 0;
 
   padding: 0;
 
-  font-family: "Jost", sans-serif;
-
   font-size: 2.8125vw;
-
-  font-weight: 400;
-
-  line-height: 1.35;
-
-  color: #000000;
+  line-height: 1.48;
 }
 
-.fifth-photo-seven {
+
+.five-intro {
+  margin: 0 0 1.6vw;
+
+  font-size: 2.8125vw;
+  line-height: 1.48;
+}
+
+
+.photo-seven {
   width: 46.17vw;
   height: 25vw;
 
-  margin-top: 1.2vw;
-
   object-fit: cover;
 
-  border-radius: 3.125vw;
+  border-radius: 2.8vw;
 }
 
 
-/* Нижняя левая */
-
-.fifth-left-bottom {
+.photo-eight {
   width: 46.17vw;
   height: 47.73vw;
 
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: flex-start;
-}
-
-
-/* Голубая плашка — стала немного ниже */
-
-.fifth-blue-wrapper {
-  position: relative;
-
-  width: 46.17vw;
-  height: 18.2vw;
-}
-
-.fifth-blue-box {
-  position: absolute;
-
-  left: 0;
-  top: 0.7vw;
-
-  width: 46.17vw;
-  height: 16.8vw;
-
-  display: flex;
-
-  align-items: center;
-
-  padding: 1vw;
-
-  background: #E2F5FB;
-
-  z-index: 2;
-}
-
-.fifth-blue-box p {
-  width: 100%;
-
-  margin: 0;
-
-  font-family: "Jost", sans-serif;
-
-  font-size: 2.8125vw;
-
-  font-weight: 400;
-
-  line-height: 1.35;
-
-  color: #000000;
-}
-
-
-/* Линии выше и ниже плашки */
-
-.fifth-blue-line {
-  position: absolute;
-
-  top: 0;
-
-  width: 0.234vw;
-  height: 18.2vw;
-
-  background: #00B7FF;
-
-  z-index: 5;
-}
-
-.fifth-blue-line-left {
-  left: 0;
-}
-
-.fifth-blue-line-right {
-  right: 0;
-}
-
-.fifth-blue-dot {
-  position: absolute;
-
-  width: 1.25vw;
-  height: 1.25vw;
-
-  border-radius: 50%;
-
-  background: #00B7FF;
-}
-
-.fifth-blue-line-left .fifth-blue-dot {
-  left: 50%;
-  top: 0;
-
-  transform: translate(-50%, -50%);
-}
-
-.fifth-blue-line-right .fifth-blue-dot {
-  left: 50%;
-  bottom: 0;
-
-  transform: translate(-50%, 50%);
-}
-
-
-/* Обычный текст — увеличенный отступ */
-
-.fifth-bottom-text {
-  width: 46.17vw;
-
-  margin: 6.3vw 0 0;
-
-  padding: 0;
-
-  font-family: "Jost", sans-serif;
-
-  font-size: 2.8125vw;
-
-  font-weight: 400;
-
-  line-height: 1.35;
-
-  color: #000000;
-}
-
-
-/* Фото 8 */
-
-.fifth-photo-eight {
-  width: 46.17vw;
-  height: 47.73vw;
-
-  overflow: hidden;
-
-  border-radius: 3.125vw;
-}
-
-.fifth-photo-eight img {
-  width: 100%;
-  height: 100%;
-
   object-fit: cover;
+
+  border-radius: 2.8vw;
+
+  margin-top: 6.2vw;
 }
 
 
 /* =========================================================
-   БЛОК 6
+   6. FINAL THOUGHT
 ========================================================= */
 
-.sixth-section {
-  position: relative;
+.section-six {
+  padding:
+    5vw
+    0
+    8vw;
 
-  width: 100vw;
+  display: flex;
 
-  min-height: 45vw;
+  flex-direction: column;
 
-  background: #ffffff;
-
-  padding-top: 7vw;
-  padding-bottom: 8vw;
-
-  overflow: hidden;
+  align-items: center;
 }
 
 
-/* Заголовок */
-
-.sixth-title {
-  width: 82vw;
-
-  margin: 0 auto;
+.final-heading {
+  width: 66vw;
 
   text-align: center;
 
-  font-family: "Pusia", sans-serif;
-
-  font-size: 3.75vw;
-
-  font-weight: 700;
-
-  line-height: 1.12;
-
-  letter-spacing: -0.02em;
-
-  color: #00B7FF;
+  margin: 0 0 6vw;
 }
 
 
-/* Плашка */
-
-.sixth-subtitle-wrapper {
-  position: relative;
-
-  width: 52vw;
-  height: 12vw;
-
-  margin: 4vw auto 0;
+.final-accent {
+  width: 40vw;
 }
 
-.sixth-subtitle-box {
-  position: absolute;
 
-  left: 0;
-  top: 0.7vw;
+.final-accent .accent-box {
+  min-height: 9.5vw;
 
-  width: 52vw;
-  height: 10.6vw;
+  padding:
+    1vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.final-accent .accent-box p {
+  font-size: 2.8125vw;
+  line-height: 1.4;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   7. FEEDBACK
+========================================================= */
+
+.section-seven {
+  width: 100%;
+
+  background: var(--light-blue);
+
+  padding-top: 5.47vw;
+}
+
+
+.feedback-content {
+  width: 92.2vw;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    46.1vw
+    46.1vw;
+
+  gap: 1.56vw;
+
+  align-items: center;
+}
+
+
+/* WHITE FORM CARD */
+
+.feedback-form-card {
+  width: 46.1vw;
+  height: 44.14vw;
+
+  background: #fff;
+
+  border-radius: 3.125vw;
 
   display: flex;
 
   align-items: center;
   justify-content: center;
-
-  padding: 1vw 2vw;
-
-  background: #E2F5FB;
-
-  z-index: 2;
-}
-
-.sixth-subtitle-box p {
-  width: 100%;
-
-  margin: 0;
-
-  text-align: center;
-
-  font-family: "Jost", sans-serif;
-
-  font-size: 2.8125vw;
-
-  font-weight: 400;
-
-  line-height: 1.35;
-
-  color: #000000;
 }
 
 
-/* Линии длиннее плашки */
-
-.sixth-decor-line {
-  position: absolute;
-
-  top: 0;
-
-  width: 0.234vw;
-  height: 12vw;
-
-  background: #00B7FF;
-
-  z-index: 5;
-}
-
-.sixth-decor-line-left {
-  left: 0;
-}
-
-.sixth-decor-line-right {
-  right: 0;
-}
-
-.sixth-decor-dot {
-  position: absolute;
-
-  width: 1.25vw;
-  height: 1.25vw;
-
-  border-radius: 50%;
-
-  background: #00B7FF;
-}
-
-.sixth-decor-line-left .sixth-decor-dot {
-  left: 50%;
-  top: 0;
-
-  transform: translate(-50%, -50%);
-}
-
-.sixth-decor-line-right .sixth-decor-dot {
-  left: 50%;
-  bottom: 0;
-
-  transform: translate(-50%, 50%);
-}
-
-
-/* =========================================================
-   БЛОК 7
-========================================================= */
-
-.seventh-section {
-  position: relative;
-
-  width: 100vw;
-
-  min-height: 55.39vw;
-
-  background: #E2F5FB;
-
-  overflow: hidden;
-}
-
-
-/* =========================================================
-   КОНТЕНТ 7 БЛОКА
-========================================================= */
-
-.feedback-content {
-  width: 100%;
-
-  height: 47.66vw;
+.feedback-form {
+  width: 43.36vw;
 
   display: flex;
 
-  align-items: flex-start;
+  flex-direction: column;
 
-  justify-content: space-between;
-
-  padding: 5.63vw 7.42vw 0;
+  align-items: stretch;
 }
 
 
-/* =========================================================
-   БЕЛАЯ ПЛАШКА ФОРМЫ
-========================================================= */
-
-.feedback-form-card {
-  width: 46.09vw;
-  height: 44.14vw;
-
-  padding: 4.14vw 2.73vw;
-
-  background: #ffffff;
-
-  border-radius: 3.125vw;
-
-  box-shadow: none;
-  border: none;
-}
-
-
-/* =========================================================
-   ФОРМА
-========================================================= */
-
-.feedback-form-card form {
+.feedback-input {
   width: 100%;
-}
-
-.feedback-input-area {
-  width: 43.36vw;
   height: 28.52vw;
-
-  margin: 0;
-}
-
-.feedback-input-area textarea {
-  display: block;
-
-  width: 100%;
-  height: 100%;
 
   resize: none;
 
   border: none;
   outline: none;
 
-  border-radius: 0.8vw;
+  border-radius: 1vw;
 
-  background: #E2F5FB;
+  background: var(--light-blue);
 
-  padding: 1.4vw;
+  padding:
+    1vw;
+
+  color: #000;
 
   font-family: "Jost", sans-serif;
-
   font-size: 2.8125vw;
-
   font-weight: 400;
 
-  line-height: 1.35;
-
-  color: #000000;
+  line-height: 1.3;
 }
 
-.feedback-input-area textarea::placeholder {
-  color: #A09898;
+
+.feedback-input::placeholder {
+  color: var(--grey);
 
   opacity: 1;
 }
 
 
-/* =========================================================
-   КНОПКА
-========================================================= */
-
-.feedback-button {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 43.36vw;
+.submit-button {
+  width: 100%;
   height: 7.34vw;
 
-  margin-top: 1vw;
+  margin-top: 1.2vw;
 
   border: none;
-  outline: none;
 
-  border-radius: 1.09vw;
+  border-radius: 1.1vw;
 
-  background: #00B7FF;
+  background: var(--blue);
 
-  color: #ffffff;
+  color: #fff;
 
   font-family: "Jost", sans-serif;
-
   font-size: 2.8125vw;
-
   font-weight: 500;
 
   cursor: pointer;
 
-  transition: opacity 0.2s ease;
-}
-
-.feedback-button:hover {
-  opacity: 0.88;
-}
-
-.feedback-button:active {
-  opacity: 0.75;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 
-/* =========================================================
-   АНОНИМНОСТЬ
-========================================================= */
+.submit-button:hover {
+  opacity: 0.92;
+}
 
-.anonymous-text {
-  margin: 0.55vw 0 0;
+
+.submit-button.submitted {
+  background: var(--light-blue);
+
+  color: var(--blue);
+}
+
+
+.anonymous {
+  margin:
+    0.6vw 0 0;
 
   font-family: "Jost", sans-serif;
-
   font-size: 1.875vw;
-
   font-weight: 300;
 
-  line-height: 1;
-
-  color: #000000;
+  color: #000;
 }
 
 
-/* =========================================================
-   СООБЩЕНИЕ ПОСЛЕ ОТПРАВКИ
-========================================================= */
+/* TEXT */
 
-.success-message {
-  margin: 0.8vw 0 0;
-
-  font-family: "Jost", sans-serif;
-
-  font-size: 1.7vw;
-
-  font-weight: 400;
-
-  color: #00B7FF;
+.feedback-copy {
+  width: 100%;
 }
 
 
-/* =========================================================
-   ТЕКСТ СПРАВА
-========================================================= */
+.feedback-copy h2 {
+  margin: 0 0 2vw;
 
-.feedback-text {
-  width: 43vw;
-
-  padding-top: 4.5vw;
-}
-
-.feedback-text h2 {
-  margin: 0 0 2.5vw;
+  color: var(--blue);
 
   font-family: "Pusia", sans-serif;
-
   font-size: 3.75vw;
-
-  font-weight: 700;
-
   line-height: 1.05;
-
-  color: #00B7FF;
-
-  text-align: left;
+  font-weight: 700;
 }
 
-.feedback-text p {
+
+.feedback-copy p {
   margin: 0;
 
   font-family: "Jost", sans-serif;
-
   font-size: 2.8125vw;
+  line-height: 1.5;
 
-  font-weight: 400;
-
-  line-height: 1.38;
-
-  color: #000000;
+  color: #000;
 }
 
 
@@ -1540,50 +1025,198 @@ textarea {
 ========================================================= */
 
 .footer {
-  position: absolute;
-
-  left: 0;
-  bottom: 0;
-
-  width: 100vw;
+  width: 100%;
   height: 7.73vw;
+
+  margin-top: 5.47vw;
+
+  padding:
+    0 2.5vw;
+
+  background: var(--blue);
 
   display: flex;
 
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 2.5vw;
-
-  background: #00B7FF;
-
-  color: #ffffff;
+  color: #fff;
 
   font-family: "Jost", sans-serif;
-
-  font-size: 1.25vw;
-
+  font-size: 2.8125vw;
   font-weight: 400;
 
-  line-height: 1;
+  text-align: center;
 }
 
-.footer-author,
-.footer-code,
-.footer-curator {
+
+.footer span {
   width: 33.333%;
 
   white-space: nowrap;
 }
 
-.footer-author {
+
+.footer span:nth-child(1) {
   text-align: left;
 }
 
-.footer-code {
+
+.footer span:nth-child(2) {
   text-align: center;
 }
 
-.footer-curator {
+
+.footer span:nth-child(3) {
   text-align: right;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .hero {
+    padding-top: 3vw;
+  }
+
+  .hero-panel {
+    width: 94vw;
+    height: auto;
+
+    min-height: 70vw;
+
+    padding: 3vw;
+
+    border-radius: 5vw;
+  }
+
+  .hero-top {
+    flex-direction: column;
+  }
+
+  .hero-title {
+    font-size: 11vw;
+  }
+
+  .hero-right {
+    width: 100%;
+  }
+
+  .hashtags {
+    font-size: 3vw;
+  }
+
+  .hero-accent {
+    width: 100%;
+  }
+
+  .hero-accent p {
+    font-size: 4vw;
+  }
+
+  .hero-image-wrap {
+    height: 45vw;
+
+    margin-top: 4vw;
+
+    border-radius: 5vw;
+  }
+
+
+  .section-title {
+    font-size: 6vw;
+  }
+
+
+  .two-layout,
+  .four-layout,
+  .five-layout,
+  .feedback-content {
+    grid-template-columns: 1fr;
+  }
+
+
+  .photo-one,
+  .photo-one img,
+  .photo-five,
+  .photo-five img,
+  .photo-six,
+  .photo-seven,
+  .photo-eight,
+  .five-accent,
+  .four-accent,
+  .feedback-form-card,
+  .feedback-form {
+    width: 100%;
+  }
+
+
+  .photo-one img,
+  .photo-five img {
+    height: auto;
+  }
+
+
+  .history-card {
+    flex-basis: 80vw;
+  }
+
+
+  .history-background {
+    min-height: 100vw;
+  }
+
+
+  .history-image {
+    height: 38vw;
+  }
+
+
+  .history-text {
+    height: 40vw;
+  }
+
+
+  .five-normal-text {
+    margin-top: 8vw;
+  }
+
+
+  .photo-eight {
+    margin-top: 5vw;
+  }
+
+
+  .feedback-form-card {
+    height: auto;
+
+    padding: 4vw;
+  }
+
+
+  .feedback-form {
+    width: 100%;
+  }
+
+
+  .feedback-input {
+    height: 55vw;
+  }
+
+
+  .submit-button {
+    height: 13vw;
+  }
+
+
+  .footer {
+    height: 15vw;
+
+    font-size: 3vw;
+
+    padding: 0 3vw;
+  }
 }

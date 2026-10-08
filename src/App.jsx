@@ -1,326 +1,311 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from 'react'
+import './styles.css'
 
-function App() {
-  const [review, setReview] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+const A = '/images/'
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+function AccentBox({ children, className = '' }) {
+  return (
+    <div className={`accent-wrap ${className}`}>
+      <span className="accent-line accent-line-left">
+        <span className="accent-dot" />
+      </span>
 
-    if (review.trim() === "") {
-      return;
+      <div className="accent-box">
+        {children}
+      </div>
+
+      <span className="accent-line accent-line-right">
+        <span className="accent-dot" />
+      </span>
+    </div>
+  )
+}
+
+function DraggableCards() {
+  const trackRef = useRef(null)
+  const drag = useRef({
+    active: false,
+    startX: 0,
+    scrollLeft: 0
+  })
+
+  function startDrag(event) {
+    const track = trackRef.current
+
+    if (!track) return
+
+    drag.current = {
+      active: true,
+      startX: event.clientX,
+      scrollLeft: track.scrollLeft
     }
 
-    setSubmitted(true);
-    setReview("");
-  };
+    track.classList.add('is-dragging')
+  }
+
+  function moveDrag(event) {
+    if (!drag.current.active) return
+
+    const track = trackRef.current
+
+    if (!track) return
+
+    const distance =
+      event.clientX - drag.current.startX
+
+    track.scrollLeft =
+      drag.current.scrollLeft - distance
+  }
+
+  function stopDrag() {
+    drag.current.active = false
+
+    if (trackRef.current) {
+      trackRef.current.classList.remove(
+        'is-dragging'
+      )
+    }
+  }
 
   return (
-    <main className="longread">
+    <div
+      ref={trackRef}
+      className="history-track"
+      onPointerDown={startDrag}
+      onPointerMove={moveDrag}
+      onPointerUp={stopDrag}
+      onPointerCancel={stopDrag}
+      onPointerLeave={stopDrag}
+    >
+      <HistoryCard
+        image="2_photo.png"
+        title="Античность"
+        progress="90%"
+      >
+        В Древнем Риме общественные уборные
+        не были утилитарным местом. Это были
+        просторные залы с мраморными сиденьями,
+        где люди обсуждали новости, заключали
+        сделки и философствовали. Римляне
+        не стеснялись этой темы. Именно тогда
+        родилась знаменитая фраза «Деньги
+        не пахнут», связанная с налогом
+        на туалеты.
+      </HistoryCard>
+
+      <HistoryCard
+        image="3_photo.png"
+        title="Средневековье"
+        progress="25%"
+      >
+        После падения Рима Европа надолго
+        забыла о гигиене. Нечистоты выливались
+        прямо на улицы, что приводило
+        к эпидемиям. Тема стала табу —
+        о ней не говорили, её прятали.
+        Это наложило отпечаток на культуру
+        на столетия вперёд.
+      </HistoryCard>
+
+      <HistoryCard
+        image="4_photo.png"
+        title="Россия"
+        progress="50%"
+      >
+        В России Пётр I одним из первых
+        попытался вернуть тему в рамки
+        приличия. Он велел строить
+        общественные уборные на улицах
+        городов. Это был шаг к тому,
+        чтобы сделать пространство города
+        удобным для человека.
+      </HistoryCard>
+    </div>
+  )
+}
+
+function HistoryCard({
+  image,
+  title,
+  progress,
+  children
+}) {
+  return (
+    <article className="history-card">
+      <img
+        className="history-image"
+        src={`${A}${image}`}
+        alt=""
+        draggable="false"
+      />
+
+      <div className="history-title-row">
+        <h3>{title}</h3>
+
+        <div className="history-progress">
+          <span
+            style={{
+              width: progress
+            }}
+          />
+        </div>
+      </div>
+
+      <div className="history-text">
+        {children}
+      </div>
+    </article>
+  )
+}
+
+function App() {
+  const [submitted, setSubmitted] =
+    useState(false)
+
+  return (
+    <div className="longread">
 
       {/* =====================================================
-          БЛОК 1
+          1. HERO
       ====================================================== */}
 
       <section className="hero">
-
-        <div className="hero-background"></div>
-
         <div className="hero-panel">
 
-          <h1 className="main-title">
-            КУЛЬТУРА
-            <br />
-            СТЫДА
-          </h1>
+          <div className="hero-top">
 
-          <div className="hashtags">
-            <span>#табу</span>
-            <span>#туалет</span>
-            <span>#уборная</span>
-            <span>#инфраструктура</span>
-          </div>
+            <h1 className="hero-title">
+              КУЛЬТУРА
+              <br />
+              СТЫДА
+            </h1>
 
-          <div className="subtitle-wrapper">
+            <div className="hero-right">
 
-            <div className="decor-line decor-line-left">
-              <div className="decor-dot"></div>
-            </div>
+              <nav className="hashtags">
+                <span>#табу</span>
+                <span>#туалет</span>
+                <span>#уборная</span>
+                <span>#инфраструктура</span>
+              </nav>
 
-            <div className="subtitle-box">
-              <span>
-                Как табуированные темы
-                <br />
-                приводят к общему дискомфорту
-              </span>
-            </div>
+              <AccentBox className="hero-accent">
+                <p>
+                  Как табуированные темы
+                  <br />
+                  приводят к общему дискомфорту
+                </p>
+              </AccentBox>
 
-            <div className="decor-line decor-line-right">
-              <div className="decor-dot"></div>
             </div>
 
           </div>
 
-          <div className="photo-wrapper">
-
+          <div className="hero-image-wrap">
             <img
-              src="/images/die.png"
+              src={`${A}die.png`}
               alt=""
-              className="hero-photo"
+              className="hero-image"
             />
 
-            <div className="photo-overlay"></div>
-
+            <div className="hero-overlay" />
           </div>
 
         </div>
-
       </section>
 
 
       {/* =====================================================
-          БЛОК 2
+          2. ПОЧЕМУ НАМ НЕЛОВКО?
       ====================================================== */}
 
-      <section className="second-section">
+      <section className="section section-two">
 
-        <div className="second-text-column">
+        <h2 className="section-title">
+          ПОЧЕМУ НАМ НЕЛОВКО?
+        </h2>
 
-          <h2 className="second-title">
-            ПОЧЕМУ НАМ НЕЛОВКО?
-          </h2>
+        <div className="two-layout">
 
-          <div className="second-subtitle-wrapper">
-
-            <div className="second-decor-line second-decor-line-left">
-              <div className="second-decor-dot"></div>
-            </div>
-
-            <div className="second-subtitle-box">
-
-              <span>
+          <div className="two-text">
+            <AccentBox>
+              <p>
                 Тема туалетов касается каждого,
                 <br />
                 но считается неприличной.
                 <br />
                 О базовых потребностях
                 <br />
-                не принято говорить вслух, появляется неловкость,
+                не принято говорить вслух,
                 <br />
-                будто это что-то грязное
+                появляется неловкость,
+                <br />
+                буд-то это что-то грязное
                 <br />
                 и неприемлемое.
-              </span>
-
-            </div>
-
-            <div className="second-decor-line second-decor-line-right">
-              <div className="second-decor-dot"></div>
-            </div>
-
+              </p>
+            </AccentBox>
           </div>
 
-        </div>
-
-
-        <div className="second-photo-column">
-
-          <div className="orange-frame"></div>
-
-          <div className="second-photo">
+          <div className="framed-photo photo-one">
+            <div className="orange-frame" />
 
             <img
-              src="/images/1_photo.png"
+              src={`${A}1_photo.png`}
               alt=""
+              draggable="false"
             />
-
           </div>
 
         </div>
-
       </section>
 
 
       {/* =====================================================
-          БЛОК 3
+          3. ОТКУДА ЭТО ВЗЯЛОСЬ?
       ====================================================== */}
 
-      <section className="third-section">
+      <section className="section section-three">
 
-        <h2 className="third-title">
+        <h2 className="section-title history-heading">
           ОТКУДА ЭТО ВЗЯЛОСЬ?
         </h2>
 
-        <div className="history-slider">
-
-
-          {/* АНТИЧНОСТЬ */}
-
-          <article className="history-card">
-
-            <img
-              src="/images/2_photo.png"
-              alt=""
-              className="history-image"
-            />
-
-            <div className="history-card-heading">
-
-              <h3>
-                Античность
-              </h3>
-
-              <div className="history-lines">
-
-                <div className="history-line-background"></div>
-
-                <div className="history-line-progress history-progress-one"></div>
-
-              </div>
-
-            </div>
-
-            <div className="history-text">
-
-              <p>
-                В Древнем Риме общественные уборные не были
-                утилитарным местом. Это были просторные залы
-                с мраморными сиденьями, где люди обсуждали
-                новости, заключали сделки и философствовали.
-                Римляне не стеснялись этой темы. Именно тогда
-                родилась знаменитая фраза «Деньги не пахнут»,
-                связанная с налогом на туалеты.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          {/* СРЕДНЕВЕКОВЬЕ */}
-
-          <article className="history-card">
-
-            <img
-              src="/images/3_photo.png"
-              alt=""
-              className="history-image"
-            />
-
-            <div className="history-card-heading">
-
-              <h3>
-                Средневековье
-              </h3>
-
-              <div className="history-lines">
-
-                <div className="history-line-background"></div>
-
-                <div className="history-line-progress history-progress-two"></div>
-
-              </div>
-
-            </div>
-
-            <div className="history-text">
-
-              <p>
-                После падения Рима Европа надолго забыла
-                о гигиене. Нечистоты выливались прямо
-                на улицы, что приводило к эпидемиям.
-                Тема стала табу — о ней не говорили,
-                её прятали. Это наложило отпечаток
-                на культуру на столетия вперёд.
-              </p>
-
-            </div>
-
-          </article>
-
-
-          {/* РОССИЯ */}
-
-          <article className="history-card">
-
-            <img
-              src="/images/4_photo.png"
-              alt=""
-              className="history-image"
-            />
-
-            <div className="history-card-heading">
-
-              <h3>
-                Россия
-              </h3>
-
-              <div className="history-lines">
-
-                <div className="history-line-background"></div>
-
-                <div className="history-line-progress history-progress-three"></div>
-
-              </div>
-
-            </div>
-
-            <div className="history-text">
-
-              <p>
-                В России Пётр I одним из первых попытался
-                вернуть тему в рамки приличия. Он велел
-                строить общественные уборные на улицах
-                городов. Это был шаг к тому, чтобы сделать
-                пространство города удобным для человека.
-              </p>
-
-            </div>
-
-          </article>
-
+        <div className="history-background">
+          <DraggableCards />
         </div>
 
       </section>
 
 
       {/* =====================================================
-          БЛОК 4
+          4. КАК ЭТО ВЛИЯЕТ?
       ====================================================== */}
 
-      <section className="fourth-section">
+      <section className="section section-four">
 
-        <div className="fourth-photo-column">
+        <div className="four-layout">
 
-          <div className="fourth-orange-frame"></div>
+          <div className="framed-photo photo-five">
 
-          <div className="fourth-photo">
+            <div className="orange-frame" />
 
             <img
-              src="/images/5_photo.png"
+              src={`${A}5_photo.png`}
               alt=""
+              draggable="false"
             />
 
           </div>
 
-        </div>
+          <div className="four-text">
 
+            <h2 className="section-title">
+              КАК ЭТО ВЛИЯЕТ?
+            </h2>
 
-        <div className="fourth-text-column">
-
-          <h2 className="fourth-title">
-            КАК ЭТО ВЛИЯЕТ?
-          </h2>
-
-          <div className="fourth-subtitle-wrapper">
-
-            <div className="fourth-decor-line fourth-decor-line-left">
-              <div className="fourth-decor-dot"></div>
-            </div>
-
-            <div className="fourth-subtitle-box">
-
-              <span>
+            <AccentBox className="four-accent">
+              <p>
                 В культуре, где всё, связанное
                 <br />
                 с телом, считается неприличным,
@@ -334,129 +319,102 @@ function App() {
                 Замалчивание темы влияет
                 <br />
                 на качество городской среды.
-              </span>
-
-            </div>
-
-            <div className="fourth-decor-line fourth-decor-line-right">
-              <div className="fourth-decor-dot"></div>
-            </div>
+              </p>
+            </AccentBox>
 
           </div>
 
         </div>
-
       </section>
 
 
       {/* =====================================================
-          БЛОК 5
+          5. ЕСЛИ ГОВОРИТЬ
       ====================================================== */}
 
-      <section className="fifth-section">
+      <section className="section section-five">
 
-        <h2 className="fifth-title">
+        <h2 className="section-title five-heading">
           ЕСЛИ ГОВОРИТЬ, ТО ЧТО БУДЕТ?
         </h2>
 
+        <div className="five-layout">
 
-        <div className="fifth-content">
+          {/* LEFT COLUMN */}
 
-
-          {/* ФОТО 6 */}
-
-          <div className="fifth-photo-six">
+          <div className="five-left">
 
             <img
-              src="/images/6_photo.png"
+              className="photo-six"
+              src={`${A}6_photo.png`}
               alt=""
+              draggable="false"
             />
+
+            <AccentBox className="five-accent">
+              <p>
+                Открытый разговор о базовых
+                <br />
+                потребностях приводит к удобным
+                <br />
+                городам для всех.
+              </p>
+            </AccentBox>
+
+            <p className="five-normal-text">
+              В результате по городам можно
+              гулять без страха. Ты знаешь,
+              что через пять минут найдёшь
+              чистый, бесплатный и современный
+              туалет.
+            </p>
 
           </div>
 
 
-          {/* ТЕКСТ + ФОТО 7 */}
+          {/* RIGHT COLUMN */}
 
-          <div className="fifth-right-top">
+          <div className="five-right">
 
-            <p className="fifth-main-text">
+            <p className="five-intro">
               В Азии про туалеты говорят открыто:
-              в рекламе, в школах, в искусстве. Есть
-              музеи, на эту тему, и детские книги
-              о гигиене. Архитекторы создают уборные
-              как арт-объекты.
+              <br />
+              в рекламе, в школах, в искусстве.
+              <br />
+              Есть музеи, на эту тему, и детские
+              <br />
+              книги о гигиене. Архитекторы
+              <br />
+              создают уборные как арт-объекты.
             </p>
 
-
             <img
-              src="/images/7_photo.png"
+              className="photo-seven"
+              src={`${A}7_photo.png`}
               alt=""
-              className="fifth-photo-seven"
+              draggable="false"
             />
 
-          </div>
-
-
-          {/* ГОЛУБАЯ ПЛАШКА + ОБЫЧНЫЙ ТЕКСТ */}
-
-          <div className="fifth-left-bottom">
-
-            <div className="fifth-blue-wrapper">
-
-              <div className="fifth-blue-line fifth-blue-line-left">
-                <div className="fifth-blue-dot"></div>
-              </div>
-
-              <div className="fifth-blue-box">
-
-                <p>
-                  Открытый разговор о базовых
-                  потребностях приводит к удобным
-                  городам для всех.
-                </p>
-
-              </div>
-
-              <div className="fifth-blue-line fifth-blue-line-right">
-                <div className="fifth-blue-dot"></div>
-              </div>
-
-            </div>
-
-
-            <p className="fifth-bottom-text">
-              В результате по городам можно гулять
-              без страха. Ты знаешь, что через пять
-              минут найдёшь чистый, бесплатный
-              и современный туалет.
-            </p>
-
-          </div>
-
-
-          {/* ФОТО 8 */}
-
-          <div className="fifth-photo-eight">
-
             <img
-              src="/images/8_photo.png"
+              className="photo-eight"
+              src={`${A}8_photo.png`}
               alt=""
+              draggable="false"
             />
 
           </div>
 
         </div>
-
       </section>
 
 
       {/* =====================================================
-          БЛОК 6
+          6. ФИНАЛЬНАЯ МЫСЛЬ
       ====================================================== */}
 
-      <section className="sixth-section">
+      <section className="section section-six">
 
-        <h2 className="sixth-title">
+        <h2 className="section-title final-heading">
           Нам пора перестать стесняться
           <br />
           и начать говорить об этом
@@ -466,93 +424,62 @@ function App() {
           станут удобнее.
         </h2>
 
-
-        <div className="sixth-subtitle-wrapper">
-
-          <div className="sixth-decor-line sixth-decor-line-left">
-            <div className="sixth-decor-dot"></div>
-          </div>
-
-
-          <div className="sixth-subtitle-box">
-
-            <p>
-              Отношение к туалетам показывает,
-              <br />
-              насколько общество готово видеть
-              <br />
-              в человеке человека.
-            </p>
-
-          </div>
-
-
-          <div className="sixth-decor-line sixth-decor-line-right">
-            <div className="sixth-decor-dot"></div>
-          </div>
-
-        </div>
+        <AccentBox className="final-accent">
+          <p>
+            Отношение к туалетам показывает,
+            <br />
+            насколько общество готово видеть
+            <br />
+            в человеке человека.
+          </p>
+        </AccentBox>
 
       </section>
 
 
       {/* =====================================================
-          БЛОК 7 — ФОРМА ОТЗЫВА
+          7. ФОРМА + FOOTER
       ====================================================== */}
 
-      <section className="seventh-section">
-
+      <section className="section-seven">
 
         <div className="feedback-content">
 
-
-          {/* ФОРМА */}
-
           <div className="feedback-form-card">
 
-            <form onSubmit={handleSubmit}>
+            <div className="feedback-form">
 
-              <div className="feedback-input-area">
-
-                <textarea
-                  value={review}
-                  onChange={(e) => {
-                    setReview(e.target.value);
-                    setSubmitted(false);
-                  }}
-                  placeholder="Ваш отзыв..."
-                  aria-label="Ваш отзыв"
-                />
-
-              </div>
-
+              <textarea
+                className="feedback-input"
+                placeholder="Ваш отзыв..."
+              />
 
               <button
-                type="submit"
-                className="feedback-button"
+                className={
+                  submitted
+                    ? 'submit-button submitted'
+                    : 'submit-button'
+                }
+                onClick={() =>
+                  setSubmitted(true)
+                }
+                type="button"
               >
-                Отправить
+                {submitted
+                  ? 'Отправлено'
+                  : 'Отправить'}
               </button>
 
-
-              <p className="anonymous-text">
+              <p className="anonymous">
                 *Опрос анонимный
               </p>
 
-              {submitted && (
-                <p className="success-message">
-                  Спасибо за ваш отзыв!
-                </p>
-              )}
-
-            </form>
+            </div>
 
           </div>
 
 
-          {/* ТЕКСТ */}
-
-          <div className="feedback-text">
+          <div className="feedback-copy">
 
             <h2>
               Давайте поговорим
@@ -580,30 +507,26 @@ function App() {
 
         </div>
 
-
-        {/* ПОДВАЛ */}
-
         <footer className="footer">
 
-          <div className="footer-author">
+          <span>
             Автор: Буракова Ольга
-          </div>
+          </span>
 
-          <div className="footer-code">
+          <span>
             ГД25ДЗ12
-          </div>
+          </span>
 
-          <div className="footer-curator">
+          <span>
             Куратор: Гриднев Сергей
-          </div>
+          </span>
 
         </footer>
 
-
       </section>
 
-    </main>
-  );
+    </div>
+  )
 }
 
-export default App;
+export default App
