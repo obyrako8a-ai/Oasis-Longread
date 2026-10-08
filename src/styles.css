@@ -1,0 +1,696 @@
+/* =========================================================
+   СБРОС
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  font-family: "Jost", sans-serif;
+}
+
+img {
+  display: block;
+}
+
+
+/* =========================================================
+   ШРИФТЫ
+========================================================= */
+
+@font-face {
+  font-family: "Pusia";
+
+  src: url("/fonts/pusia/Pusia-Bold.woff2") format("woff2");
+
+  font-weight: 700;
+  font-style: normal;
+
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "Jost";
+
+  src: url("/fonts/jost/Jost-Variable.woff2") format("woff2");
+
+  font-weight: 100 900;
+  font-style: normal;
+
+  font-display: swap;
+}
+
+
+/* =========================================================
+   ЛОНГРИД
+========================================================= */
+
+.longread {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   ПЕРВЫЙ БЛОК
+========================================================= */
+
+.hero {
+  position: relative;
+
+  width: 100vw;
+
+  /*
+    Первый блок увеличен по высоте,
+    чтобы background было видно снизу.
+  */
+
+  height: 61vw;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   ФОНОВОЕ ИЗОБРАЖЕНИЕ
+========================================================= */
+
+.hero-background {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("/images/background.png");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   БЕЛАЯ ПЛАШКА
+========================================================= */
+
+.hero-panel {
+  position: absolute;
+
+  left: 3.125vw;
+  top: 3.125vw;
+
+  width: 93.75vw;
+  height: 51.328vw;
+
+  background: #ffffff;
+
+  border-radius: 3.125vw;
+
+  border: none;
+  box-shadow: none;
+
+  overflow: hidden;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ЗАГОЛОВОК
+========================================================= */
+
+.main-title {
+  position: absolute;
+
+  left: 2.5vw;
+  top: 1.4vw;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: "Pusia", sans-serif;
+
+  font-size: 7.5vw;
+
+  font-weight: 700;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.035em;
+
+  color: #00B7FF;
+
+  text-transform: uppercase;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   ХЭШТЕГИ
+========================================================= */
+
+.hashtags {
+  position: absolute;
+
+  left: 47vw;
+
+  width: 42.27vw;
+
+  top: 1.65vw;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 1.875vw;
+
+  font-weight: 300;
+
+  line-height: 1.2;
+
+  color: #000000;
+
+  z-index: 10;
+}
+
+.hashtags span {
+  display: block;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ПЕРВАЯ ГОЛУБАЯ ПЛАШКА
+========================================================= */
+
+.subtitle-wrapper {
+  position: absolute;
+
+  left: 47vw;
+  top: 6.25vw;
+
+  width: 42.27vw;
+  height: 11.1vw;
+
+  z-index: 10;
+}
+
+
+.subtitle-box {
+  position: absolute;
+
+  left: 0;
+  top: 0.9vw;
+
+  width: 42.27vw;
+  height: 8.75vw;
+
+  display: flex;
+  align-items: center;
+
+  background: #E2F5FB;
+
+  padding: 0 0.7vw;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.8125vw;
+
+  font-weight: 400;
+
+  line-height: 1.42;
+
+  color: #000000;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ПЕРВЫЕ ГОЛУБЫЕ ЛИНИИ
+========================================================= */
+
+.decor-line {
+  position: absolute;
+
+  width: 0.234vw;
+  height: 11.1vw;
+
+  background: #00B7FF;
+
+  z-index: 5;
+}
+
+.decor-line-left {
+  left: 0;
+  top: 0;
+}
+
+.decor-line-right {
+  right: 0;
+  top: 0;
+}
+
+
+.decor-dot {
+  position: absolute;
+
+  width: 1.25vw;
+  height: 1.25vw;
+
+  border-radius: 50%;
+
+  background: #00B7FF;
+}
+
+
+.decor-line-left .decor-dot {
+  left: 50%;
+  top: 0;
+
+  transform: translate(-50%, -50%);
+}
+
+
+.decor-line-right .decor-dot {
+  left: 50%;
+  bottom: 0;
+
+  transform: translate(-50%, 50%);
+}
+
+
+/* =========================================================
+   ФОТО ПЕРВОГО БЛОКА
+========================================================= */
+
+.photo-wrapper {
+  position: absolute;
+
+  left: 2.42vw;
+  top: 20.2vw;
+
+  width: 88.3vw;
+  height: 28.3vw;
+
+  overflow: hidden;
+
+  border-radius: 3.125vw;
+
+  z-index: 4;
+}
+
+
+.hero-photo {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   ЧЁРНОЕ РАЗМЫТИЕ
+========================================================= */
+
+.photo-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.46);
+
+  backdrop-filter: blur(1.8vw);
+  -webkit-backdrop-filter: blur(1.8vw);
+
+  border-radius: 3.125vw;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ВТОРОЙ БЛОК
+========================================================= */
+
+.second-section {
+  position: relative;
+
+  width: 100vw;
+
+  /*
+    Здесь оставляем достаточно места
+    для всей композиции.
+  */
+
+  height: 55vw;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   ЛЕВАЯ КОЛОНКА — ФОТО
+========================================================= */
+
+.second-photo-column {
+  position: absolute;
+
+  /*
+    Фото находится слева.
+  */
+
+  left: 6.1vw;
+
+  /*
+    Верх фотографии.
+  */
+
+  top: 13.5vw;
+
+  width: 47.62vw;
+
+  height: 31.66vw;
+}
+
+
+/* =========================================================
+   ФОТО
+========================================================= */
+
+.second-photo {
+  position: absolute;
+
+  /*
+    Фотография находится поверх рамки.
+  */
+
+  left: 0;
+  top: 0;
+
+  width: 47.62vw;
+  height: 31.66vw;
+
+  overflow: hidden;
+
+  /*
+    Скругление самой фотографии.
+  */
+
+  border-radius: 3.125vw;
+
+  z-index: 3;
+}
+
+
+.second-photo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center center;
+}
+
+
+/* =========================================================
+   ОРАНЖЕВАЯ РАМКА
+========================================================= */
+
+.orange-frame {
+  position: absolute;
+
+  /*
+    Рамка немного выходит
+    за пределы фотографии.
+  */
+
+  left: -1.7vw;
+  top: -1.5vw;
+
+  width: 47.62vw;
+  height: 31.66vw;
+
+  border: 0.234vw solid #FF6436;
+
+  /*
+    Твои 40 px
+    относительно ширины 1280.
+  */
+
+  border-radius: 3.125vw;
+
+  /*
+    Главный поворот.
+  */
+
+  transform: rotate(-12.75deg);
+
+  transform-origin: center center;
+
+  background: transparent;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ПРАВАЯ КОЛОНКА — ТЕКСТ
+========================================================= */
+
+.second-text-column {
+  position: absolute;
+
+  /*
+    Текст справа.
+  */
+
+  left: 53.8vw;
+
+  top: 4.5vw;
+
+  width: 40vw;
+
+  height: 45vw;
+}
+
+
+/* =========================================================
+   ЗАГОЛОВОК ВТОРОГО БЛОКА
+========================================================= */
+
+.second-title {
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: "Pusia", sans-serif;
+
+  /*
+    48 px / 1280
+  */
+
+  font-size: 3.75vw;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.025em;
+
+  color: #00B7FF;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ВТОРАЯ ГОЛУБАЯ ПЛАШКА
+========================================================= */
+
+.second-subtitle-wrapper {
+  position: relative;
+
+  margin-top: 1.4vw;
+
+  width: 42.27vw;
+
+  height: 10.7vw;
+}
+
+
+/* =========================================================
+   ТЕКСТОВАЯ ПЛАШКА
+========================================================= */
+
+.second-subtitle-box {
+  position: absolute;
+
+  left: 0;
+  top: 0.9vw;
+
+  width: 42.27vw;
+  height: 8.75vw;
+
+  display: flex;
+
+  align-items: center;
+
+  background: #E2F5FB;
+
+  padding-left: 0.7vw;
+  padding-right: 0.7vw;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.3vw;
+
+  font-weight: 400;
+
+  line-height: 1.35;
+
+  color: #000000;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ВТОРЫЕ ЛИНИИ
+========================================================= */
+
+.second-decor-line {
+  position: absolute;
+
+  width: 0.234vw;
+
+  height: 10.7vw;
+
+  background: #00B7FF;
+
+  z-index: 5;
+}
+
+
+.second-decor-line-left {
+  left: 0;
+  top: 0;
+}
+
+
+.second-decor-line-right {
+  right: 0;
+  top: 0;
+}
+
+
+/* =========================================================
+   ВТОРЫЕ КРУГИ
+========================================================= */
+
+.second-decor-dot {
+  position: absolute;
+
+  width: 1.25vw;
+  height: 1.25vw;
+
+  border-radius: 50%;
+
+  background: #00B7FF;
+}
+
+
+.second-decor-line-left .second-decor-dot {
+  left: 50%;
+  top: 0;
+
+  transform: translate(-50%, -50%);
+}
+
+
+.second-decor-line-right .second-decor-dot {
+  left: 50%;
+  bottom: 0;
+
+  transform: translate(-50%, 50%);
+}
+
+
+/* =========================================================
+   ОСНОВНОЙ ТЕКСТ
+========================================================= */
+
+.second-text {
+  position: relative;
+
+  margin-top: 2vw;
+
+  width: 42.27vw;
+
+  font-family: "Jost", sans-serif;
+
+  font-size: 2.5vw;
+
+  font-weight: 400;
+
+  line-height: 1.42;
+
+  color: #000000;
+}
+
+
+.second-text p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   ЗАГОТОВКА ПОД СЛЕДУЮЩИЕ БЛОКИ
+========================================================= */
+
+.content-placeholder {
+  width: 100%;
+
+  min-height: 100vw;
+
+  background: #ffffff;
+}
