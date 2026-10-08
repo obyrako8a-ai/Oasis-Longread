@@ -14,7 +14,6 @@ function App() {
 
         <div className="hero-panel">
 
-          {/* Заголовок */}
           <h1 className="main-title">
             КУЛЬТУРА
             <br />
@@ -22,7 +21,6 @@ function App() {
           </h1>
 
 
-          {/* Хэштеги */}
           <div className="hashtags">
             <span>#табу</span>
             <span>#туалет</span>
@@ -31,7 +29,6 @@ function App() {
           </div>
 
 
-          {/* Голубая плашка */}
           <div className="subtitle-wrapper">
 
             <div className="decor-line decor-line-left">
@@ -53,7 +50,6 @@ function App() {
           </div>
 
 
-          {/* Фотография */}
           <div className="photo-wrapper">
 
             <img
@@ -77,10 +73,7 @@ function App() {
 
       <section className="second-section">
 
-
-        {/* -------------------------------------------------
-            ЛЕВАЯ ЧАСТЬ — ТЕКСТ
-        -------------------------------------------------- */}
+        {/* ТЕКСТ */}
 
         <div className="second-text-column">
 
@@ -88,8 +81,6 @@ function App() {
             ПОЧЕМУ НАМ НЕЛОВКО?
           </h2>
 
-
-          {/* Голубая плашка со всем текстом */}
 
           <div className="second-subtitle-wrapper">
 
@@ -126,9 +117,7 @@ function App() {
         </div>
 
 
-        {/* -------------------------------------------------
-            ПРАВАЯ ЧАСТЬ — ФОТО
-        -------------------------------------------------- */}
+        {/* ФОТО */}
 
         <div className="second-photo-column">
 
@@ -154,20 +143,16 @@ function App() {
 
       <section className="third-section">
 
-        {/* Заголовок */}
-
         <h2 className="third-title">
           ОТКУДА ЭТО ВЗЯЛОСЬ?
         </h2>
 
 
-        {/* Синий контейнер */}
-
         <div className="history-slider">
 
 
           {/* =================================================
-              КАРТОЧКА 1 — АНТИЧНОСТЬ
+              АНТИЧНОСТЬ
           ================================================== */}
 
           <article className="history-card">
@@ -178,8 +163,6 @@ function App() {
               className="history-image"
             />
 
-
-            {/* Заголовок + полоски */}
 
             <div className="history-card-heading">
 
@@ -197,8 +180,6 @@ function App() {
 
             </div>
 
-
-            {/* Прокручиваемый текст */}
 
             <div className="history-text">
 
@@ -218,7 +199,7 @@ function App() {
 
 
           {/* =================================================
-              КАРТОЧКА 2 — СРЕДНЕВЕКОВЬЕ
+              СРЕДНЕВЕКОВЬЕ
           ================================================== */}
 
           <article className="history-card">
@@ -264,7 +245,7 @@ function App() {
 
 
           {/* =================================================
-              КАРТОЧКА 3 — РОССИЯ
+              РОССИЯ
           ================================================== */}
 
           <article className="history-card">
@@ -307,6 +288,83 @@ function App() {
 
           </article>
 
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          ЧЕТВЁРТЫЙ БЛОК
+      ====================================================== */}
+
+      <section className="fourth-section">
+
+
+        {/* =================================================
+            ФОТО — СЛЕВА
+        ================================================== */}
+
+        <div className="fourth-photo-column">
+
+          <div className="fourth-orange-frame"></div>
+
+          <div className="fourth-photo">
+
+            <img
+              src="/images/5_photo.png"
+              alt=""
+            />
+
+          </div>
+
+        </div>
+
+
+        {/* =================================================
+            ТЕКСТ — СПРАВА
+        ================================================== */}
+
+        <div className="fourth-text-column">
+
+          <h2 className="fourth-title">
+            КАК ЭТО ВЛИЯЕТ?
+          </h2>
+
+
+          <div className="fourth-subtitle-wrapper">
+
+            <div className="fourth-decor-line fourth-decor-line-left">
+              <div className="fourth-decor-dot"></div>
+            </div>
+
+
+            <div className="fourth-subtitle-box">
+
+              <span>
+                В культуре, где всё, связанное
+                <br />
+                с телом, считается неприличным,
+                <br />
+                туалеты отходят на второй план.
+                <br />
+                Их прячут, экономят на них,
+                <br />
+                делают неудобными.
+                <br />
+                Замалчивание темы влияет
+                <br />
+                на качество городской среды.
+              </span>
+
+            </div>
+
+
+            <div className="fourth-decor-line fourth-decor-line-right">
+              <div className="fourth-decor-dot"></div>
+            </div>
+
+          </div>
 
         </div>
 
