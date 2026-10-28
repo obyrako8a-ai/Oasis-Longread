@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useForm } from '@formspree/react'
 import './styles.css'
 
-const ASSETS = '/images/'
+const ASSETS = `${import.meta.env.BASE_URL}images/`
 
 function AccentBox({ children, className = '' }) {
   const ref = useRef(null)

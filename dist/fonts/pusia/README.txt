@@ -1,0 +1,3 @@
+Pusia is a versatile font family with a lot of character and warmth. It is a professional, contemporary sans serif with original letter forms, friendly and dynamic feel. Its subtle curved shapes and attention to details give Pusia a very distinctive look. Its proportions and optimized kerning make it a very clean and legible in all sizes.
+
+Pusia is a great choice for all kinds of design work, both print and on-screen. It is perfect for display use in headlines, advertising, logo design and branding as well as long and short paragraphs of text.

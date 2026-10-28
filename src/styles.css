@@ -1,13 +1,14 @@
 @font-face {
-  font-family: "Pusia";
-  src: url("/fonts/pusia/Pusia-Bold.woff2") format("woff2");
+  font-family: 'Pusia';
+  src: url('/fonts/Pusia-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
-  font-family: "Jost";
-  src: url("/fonts/jost/Jost-Variable.woff2") format("woff2");
+  font-family: 'Jost';
+  src: url('/fonts/Jost-Variable.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
