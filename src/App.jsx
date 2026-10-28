@@ -1,14 +1,64 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './styles.css'
 
 const ASSETS = '/images/'
 
 function AccentBox({ children, className = '' }) {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.25 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className={`accent-wrap ${className}`}>
+    <div ref={ref} className={`accent-wrap ${visible ? 'is-visible' : ''} ${className}`}>
       <span className="accent-line accent-line-left" />
       <div className="accent-box">{children}</div>
       <span className="accent-line accent-line-right" />
+    </div>
+  )
+}
+
+function StoryRow({ children, className = '' }) {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div ref={ref} className={`story-row ${visible ? 'is-visible' : ''} ${className}`}>
+      {children}
     </div>
   )
 }
@@ -77,13 +127,34 @@ const HISTORY_ITEMS = [
 ]
 
 function HistoryCard({ item }) {
+  const ref = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <article className="history-card">
+    <article ref={ref} className={`history-card ${visible ? 'is-visible' : ''}`}>
       <img className="history-image" src={`${ASSETS}${item.image}`} alt="" draggable="false" />
       <div className="history-title-row">
         <h3>{item.title}</h3>
         <div className="history-progress">
-          <span style={{ width: item.progress }} />
+          <span style={{ '--progress': item.progress }} />
         </div>
       </div>
       <p className="history-text">{item.text}</p>
@@ -156,15 +227,15 @@ function App() {
       </section>
 
       <section className="section section-three">
-  <div className="history-background">
-    <h2 className="section-title history-heading">ОТКУДА ЭТО ВЗЯЛОСЬ?</h2>
-    <div className="history-grid">
-      {HISTORY_ITEMS.map((item) => (
-        <HistoryCard key={item.title} item={item} />
-      ))}
-    </div>
-  </div>
-</section>
+        <div className="history-background">
+          <h2 className="section-title history-heading">ОТКУДА ЭТО ВЗЯЛОСЬ?</h2>
+          <div className="history-grid">
+            {HISTORY_ITEMS.map((item) => (
+              <HistoryCard key={item.title} item={item} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section section-four">
         <div className="four-layout">
@@ -192,25 +263,25 @@ function App() {
       <section className="section section-five">
         <h2 className="section-title five-heading">ЕСЛИ ГОВОРИТЬ, ТО ЧТО БУДЕТ?</h2>
         <div className="story-rows">
-          <div className="story-row">
+          <StoryRow>
             <p className="story-copy align-right">
               В Азии про туалеты говорят открыто: в рекламе, в школах, в искусстве. Есть музеи на эту тему и детские книги о гигиене. Архитекторы создают уборные как арт-объекты.
             </p>
             <img src={`${ASSETS}7_photo.png`} alt="Современная общественная уборная" />
-          </div>
-          <div className="story-row reverse">
+          </StoryRow>
+          <StoryRow className="reverse">
             <img src={`${ASSETS}6_photo.png`} alt="" />
             <p className="story-copy">
               В Сингапуре власти ввели штрафы за неубранный туалет и запустили кампании в школах. Чистота стала нормой, а не исключением. Результат: Сингапур считается одним из самых комфортных городов мира по качеству общественных уборных.
             </p>
-          </div>
-          <div className="story-row">
+          </StoryRow>
+          <StoryRow>
             <p className="story-copy align-right">
               В Швейцарии городские власти Цюриха создали единый бренд «ZüriWC», повесили синие указатели и стали публиковать всю информацию на сайте. Сейчас в городе 94 общественных туалета. Все точки оборудованы для людей с инвалидностью, вход бесплатный.
             </p>
             <img src={`${ASSETS}66_photo.png`} alt="Общественная уборная в городе" />
-          </div>
-          <div className="story-row last-story">
+          </StoryRow>
+          <StoryRow className="last-story">
             <img src={`${ASSETS}88_photo.png`} alt="Иллюстрация о туалетах" />
             <div className="last-story-copy">
               <AccentBox className="five-accent">
@@ -224,7 +295,7 @@ function App() {
                 В результате по городам можно гулять без страха. Ты знаешь, что через пять минут найдёшь чистый, бесплатный и современный туалет.
               </p>
             </div>
-          </div>
+          </StoryRow>
         </div>
       </section>
 
