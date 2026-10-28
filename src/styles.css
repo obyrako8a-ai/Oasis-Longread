@@ -226,8 +226,8 @@ img {
   inset: 0;
   background: rgba(0, 0, 0, 0.24);
   border-radius: inherit;
-  backdrop-filter: blur(23px);
-  -webkit-backdrop-filter: blur(23px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 /* WHY */
@@ -735,6 +735,11 @@ img {
     aspect-ratio: 358 / 200;
     margin-top: 10vw;
     border-radius: 4vw;
+  }
+
+    .hero-overlay {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
   }
 
    .accent-line {

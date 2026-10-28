@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useForm } from '@formspree/react'
 import './styles.css'
 
 const ASSETS = '/images/'
@@ -44,10 +45,7 @@ function StoryRow({ children, className = '' }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true)
-            observer.unobserve(entry.target)
-          }
+          setVisible(entry.isIntersecting)
         })
       },
       { threshold: 0.2 }
@@ -163,18 +161,7 @@ function HistoryCard({ item }) {
 }
 
 function App() {
-  const [submitted, setSubmitted] = useState(false)
-  const [feedback, setFeedback] = useState('')
-
-  function submitFeedback(event) {
-    event.preventDefault()
-    setSubmitted(true)
-  }
-
-  function handleFeedbackChange(event) {
-    setFeedback(event.target.value)
-    setSubmitted(false)
-  }
+  const [formState, handleFormspreeSubmit] = useForm('xkjjbapp')
 
   return (
     <main className="longread">
@@ -197,7 +184,10 @@ function App() {
             </div>
           </div>
           <div className="hero-image-wrap">
-            <img src={`${ASSETS}die.png`} alt="" className="hero-image" />
+            <picture>
+              <source media="(max-width: 480px)" srcSet={`${ASSETS}200_photo.png`} />
+              <img src={`${ASSETS}die.png`} alt="" className="hero-image" />
+            </picture>
             <div className="hero-overlay" />
           </div>
         </div>
@@ -317,7 +307,7 @@ function App() {
       <section className="section-seven">
         <div className="feedback-content">
           <div className="feedback-form-card">
-            <form className="feedback-form" onSubmit={submitFeedback}>
+            <form className="feedback-form" onSubmit={handleFormspreeSubmit}>
               <p className="form-explainer">
                 Ваши отзывы помогут создать платформу<br />
                 «Оазис» для поиска доступных туалетов.
@@ -325,15 +315,16 @@ function App() {
               <textarea
                 className="feedback-input"
                 placeholder="Ваш отзыв..."
-                value={feedback}
-                onChange={handleFeedbackChange}
+                name="message"
                 aria-label="Ваш отзыв"
+                disabled={formState.submitting}
               />
               <button
-                className={submitted ? 'submit-button submitted' : 'submit-button'}
+                className={`submit-button ${formState.succeeded ? 'submitted' : ''}`}
                 type="submit"
+                disabled={formState.submitting || formState.succeeded}
               >
-                {submitted ? 'Отправлено' : 'Отправить'}
+                {formState.submitting ? 'Отправка...' : formState.succeeded ? 'Отправлено' : 'Отправить'}
               </button>
             </form>
           </div>
