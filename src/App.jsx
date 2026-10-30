@@ -138,7 +138,7 @@ const HISTORY_ITEMS = [
   },
   {
     image: '4_photo.png',
-    title: 'Россия',
+    title: 'Россия XVII в.',
     progress: '50%',
     text: (
       <>
